@@ -1,0 +1,1035 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cast Basement — Studio Latihan Voice Acting</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Special+Elite&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#15110d;
+  --bg-panel:#211b15;
+  --bg-panel-2:#2a231b;
+  --wood-line:rgba(0,0,0,.28);
+  --paper:#f2e6c9;
+  --paper-2:#e8d8ac;
+  --ink:#2b2016;
+  --ink-soft:#5a4b38;
+  --amber:#e2a344;
+  --amber-dim:#a9752f;
+  --tape:#4a7c59;
+  --tape-dim:#345a40;
+  --onair:#c1443c;
+  --muted:#9c8f78;
+  --line:rgba(226,163,68,.18);
+  --shadow:0 18px 40px rgba(0,0,0,.45);
+  --radius:3px;
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{
+  background:
+    radial-gradient(ellipse at 50% -10%, rgba(226,163,68,.08), transparent 55%),
+    repeating-linear-gradient(90deg, var(--bg) 0 62px, var(--wood-line) 62px 64px),
+    var(--bg);
+  color:var(--paper);
+  font-family:'Work Sans',sans-serif;
+  min-height:100vh;
+}
+::selection{background:var(--amber);color:var(--ink);}
+h1,h2,h3{font-family:'Anton',sans-serif;font-weight:400;letter-spacing:.02em;margin:0;}
+.type{font-family:'Special Elite',monospace;}
+button{font-family:'Work Sans',sans-serif;cursor:pointer;}
+a{color:inherit;}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px;}
+
+/* ---------- HEADER ---------- */
+header.site{
+  border-bottom:1px solid var(--line);
+  background:linear-gradient(180deg,rgba(0,0,0,.25),transparent);
+  padding:22px 0 0;
+  position:relative;
+}
+.bulb-glow{
+  position:absolute;top:-60px;left:50%;transform:translateX(-50%);
+  width:340px;height:200px;border-radius:50%;
+  background:radial-gradient(ellipse at center, rgba(226,163,68,.25), transparent 70%);
+  pointer-events:none;
+}
+.brand-row{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap;position:relative;}
+.brand h1{font-size:clamp(28px,5vw,44px);color:var(--paper);text-shadow:0 2px 0 rgba(0,0,0,.4);}
+.brand .tagline{
+  font-family:'Special Elite',monospace;color:var(--amber);font-size:13px;margin-top:2px;
+  display:inline-block;transform:rotate(-1deg);
+}
+.onair{
+  display:flex;align-items:center;gap:8px;font-size:11px;letter-spacing:.14em;color:var(--muted);
+  border:1px solid var(--line);padding:6px 10px;border-radius:20px;background:rgba(0,0,0,.2);
+}
+.onair .dot{width:9px;height:9px;border-radius:50%;background:var(--onair);box-shadow:0 0 8px var(--onair);}
+.onair.live .dot{animation:blink 1s infinite;}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
+nav.tabs{display:flex;gap:6px;margin:20px 0 0;flex-wrap:wrap;padding-bottom:14px;}
+nav.tabs button{
+  background:var(--bg-panel);border:1px solid var(--line);color:var(--muted);
+  padding:10px 16px;border-radius:20px 20px 0 0;font-size:13px;font-weight:600;letter-spacing:.03em;
+  transition:.15s;border-bottom:none;
+}
+nav.tabs button.active{background:var(--paper);color:var(--ink);border-color:var(--paper);}
+nav.tabs button:not(.active):hover{color:var(--amber);border-color:var(--amber-dim);}
+
+main{padding:34px 0 80px;}
+.panel{
+  background:var(--bg-panel);border:1px solid var(--line);border-radius:var(--radius);
+  box-shadow:var(--shadow);
+}
+.section-head{margin-bottom:22px;}
+.section-head .eyebrow{color:var(--amber);font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;}
+.section-head h2{font-size:clamp(22px,3.4vw,30px);color:var(--paper);margin-top:4px;}
+.section-head p{color:var(--muted);font-size:14px;margin-top:6px;max-width:560px;line-height:1.5;}
+
+/* ---------- GACHA ---------- */
+.gacha-grid{display:grid;grid-template-columns:1fr;gap:26px;}
+@media(min-width:860px){.gacha-grid{grid-template-columns:340px 1fr;}}
+.machine-wrap{padding:26px;display:flex;flex-direction:column;align-items:center;gap:16px;}
+.type-toggle{display:flex;background:var(--bg-panel-2);border:1px solid var(--line);border-radius:24px;padding:4px;width:100%;}
+.type-toggle button{flex:1;background:transparent;border:none;color:var(--muted);padding:10px 8px;border-radius:20px;font-weight:700;font-size:13px;letter-spacing:.04em;transition:.15s;}
+.type-toggle button.active{background:var(--amber);color:var(--ink);}
+svg#machine{width:100%;max-width:260px;height:auto;filter:drop-shadow(0 12px 18px rgba(0,0,0,.5));}
+.lever-btn{
+  background:linear-gradient(180deg,var(--onair),#8c2e28);color:#fff;border:none;border-radius:30px;
+  padding:16px 30px;font-size:15px;font-weight:700;letter-spacing:.06em;box-shadow:0 6px 0 #6e211c,0 10px 18px rgba(0,0,0,.4);
+  transition:transform .08s;width:100%;
+}
+.lever-btn:active{transform:translateY(4px);box-shadow:0 2px 0 #6e211c,0 4px 10px rgba(0,0,0,.4);}
+.lever-btn:disabled{opacity:.55;cursor:not-allowed;}
+.vu{display:flex;gap:3px;align-items:flex-end;height:22px;}
+.vu span{width:5px;background:var(--tape-dim);border-radius:1px;height:20%;transition:height .1s;}
+.vu.active span{animation:vubar 1s infinite ease-in-out;background:var(--tape);}
+.vu span:nth-child(2){animation-delay:.1s}.vu span:nth-child(3){animation-delay:.2s}
+.vu span:nth-child(4){animation-delay:.3s}.vu span:nth-child(5){animation-delay:.15s}
+.vu span:nth-child(6){animation-delay:.25s}
+@keyframes vubar{0%,100%{height:20%}50%{height:100%}}
+.machine-stats{font-size:11px;color:var(--muted);text-align:center;line-height:1.6;}
+.machine-stats b{color:var(--amber);}
+
+.result-area{padding:26px;min-height:340px;display:flex;align-items:center;justify-content:center;}
+.result-empty{color:var(--muted);text-align:center;max-width:280px;font-size:14px;line-height:1.6;}
+.result-empty .cap-icon{font-size:34px;display:block;margin-bottom:10px;}
+.script-card{
+  background:var(--paper);color:var(--ink);border-radius:2px;width:100%;padding:22px 24px 26px;
+  position:relative;box-shadow:var(--shadow);
+  clip-path:polygon(0 0,6% 2%,14% 0,22% 1.5%,30% 0,38% 2%,46% 0,54% 1.5%,62% 0,70% 2%,78% 0,86% 1.5%,94% 0,100% 2%,100% 100%,0 100%);
+  animation:pop .35s cubic-bezier(.2,1.4,.4,1);
+}
+@keyframes pop{from{opacity:0;transform:scale(.9) translateY(10px)}to{opacity:1;transform:scale(1) translateY(0)}}
+.pin{position:absolute;top:10px;right:16px;width:14px;height:14px;border-radius:50%;background:var(--onair);box-shadow:0 2px 3px rgba(0,0,0,.4), inset 0 2px 2px rgba(255,255,255,.3);}
+.badges{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px;}
+.badge{font-size:10px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:4px 9px;border-radius:12px;color:#fff;}
+.b-type{background:var(--ink);}
+.b-emo{background:var(--onair);}
+.b-diff{background:var(--tape-dim);}
+.b-theme{background:var(--amber-dim);}
+.script-card h3{font-size:22px;color:var(--ink);margin-bottom:4px;}
+.char-list{font-size:12px;color:var(--ink-soft);margin-bottom:12px;font-weight:600;}
+.script-text{font-family:'Special Elite',monospace;font-size:14.5px;line-height:1.9;white-space:pre-wrap;color:var(--ink);border-top:1px dashed var(--ink-soft);padding-top:14px;max-height:340px;overflow-y:auto;}
+.script-text b{color:var(--onair);}
+.card-actions{display:flex;gap:8px;margin-top:16px;flex-wrap:wrap;}
+.mini-btn{background:var(--ink);color:var(--paper);border:none;padding:9px 14px;border-radius:16px;font-size:12px;font-weight:700;}
+.mini-btn.alt{background:transparent;border:1px solid var(--ink-soft);color:var(--ink);}
+.mini-btn:hover{opacity:.85;}
+
+/* ---------- BROWSE ---------- */
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px;}
+.filters select,.filters input{
+  background:var(--bg-panel-2);border:1px solid var(--line);color:var(--paper);padding:9px 12px;border-radius:8px;font-size:13px;
+}
+.filters input{flex:1;min-width:160px;}
+.count-note{color:var(--muted);font-size:12px;margin:-8px 0 16px;}
+.card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:16px;}
+.index-card{
+  background:var(--paper);color:var(--ink);border-radius:2px;padding:16px 16px 14px;cursor:pointer;
+  box-shadow:0 8px 18px rgba(0,0,0,.35);position:relative;transition:transform .12s;
+  border-top:3px dashed var(--paper-2);
+}
+.index-card:hover{transform:translateY(-3px);}
+.index-card .clip{position:absolute;top:-8px;left:16px;width:22px;height:14px;background:var(--amber-dim);border-radius:3px;box-shadow:0 2px 3px rgba(0,0,0,.3);}
+.index-card h4{font-size:15px;margin:8px 0 6px;}
+.index-card p{font-size:12px;color:var(--ink-soft);line-height:1.5;max-height:52px;overflow:hidden;font-family:'Special Elite',monospace;}
+.index-card .badges{margin-top:10px;}
+.index-card .badge{font-size:9px;padding:3px 7px;}
+.empty-note{color:var(--muted);text-align:center;padding:40px 0;font-size:14px;}
+
+/* modal */
+.modal-bg{position:fixed;inset:0;background:rgba(10,8,6,.72);display:none;align-items:center;justify-content:center;padding:20px;z-index:50;}
+.modal-bg.open{display:flex;}
+.modal-card{max-width:560px;width:100%;max-height:86vh;overflow-y:auto;}
+
+/* ---------- KOLEKSI ---------- */
+.stats-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px;margin-bottom:24px;}
+.stat-box{background:var(--bg-panel-2);border:1px solid var(--line);border-radius:8px;padding:14px 16px;text-align:center;}
+.stat-box .num{font-family:'Anton',sans-serif;font-size:26px;color:var(--amber);}
+.stat-box .lbl{font-size:11px;color:var(--muted);letter-spacing:.05em;text-transform:uppercase;margin-top:2px;}
+.history-list{list-style:none;padding:0;margin:0;border-top:1px solid var(--line);}
+.history-list li{display:flex;justify-content:space-between;gap:10px;padding:10px 0;border-bottom:1px solid var(--line);font-size:13px;}
+.history-list .h-title{color:var(--paper);font-weight:600;}
+.history-list .h-time{color:var(--muted);font-size:11px;white-space:nowrap;}
+
+/* ---------- SUBMIT ---------- */
+.form-grid{display:grid;grid-template-columns:1fr;gap:14px;}
+@media(min-width:640px){.form-grid.two{grid-template-columns:1fr 1fr;}}
+.field label{display:block;font-size:12px;color:var(--muted);margin-bottom:6px;letter-spacing:.03em;}
+.field input,.field select,.field textarea{
+  width:100%;background:var(--bg-panel-2);border:1px solid var(--line);color:var(--paper);padding:10px 12px;border-radius:8px;font-size:14px;font-family:inherit;
+}
+.field textarea{min-height:140px;font-family:'Special Elite',monospace;resize:vertical;line-height:1.6;}
+.char-rows{display:flex;flex-direction:column;gap:8px;}
+.char-row{display:flex;gap:8px;}
+.char-row input{flex:1;}
+.char-row button{background:transparent;border:1px solid var(--line);color:var(--onair);border-radius:8px;padding:0 12px;}
+.add-char{align-self:flex-start;background:transparent;border:1px dashed var(--line);color:var(--amber);padding:8px 12px;border-radius:8px;font-size:12px;}
+.submit-btn{background:var(--amber);color:var(--ink);border:none;padding:13px 22px;border-radius:24px;font-weight:700;font-size:14px;letter-spacing:.03em;}
+.submit-btn:hover{background:#eeb763;}
+.toast{
+  position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(120%);background:var(--tape);color:#fff;
+  padding:12px 22px;border-radius:22px;font-size:13px;font-weight:600;box-shadow:var(--shadow);transition:transform .3s;z-index:60;
+}
+.toast.show{transform:translateX(-50%) translateY(0);}
+.recent-list{margin-top:26px;}
+.recent-list h3{font-size:15px;color:var(--paper);margin-bottom:10px;}
+footer.site{border-top:1px solid var(--line);padding:22px 0;color:var(--muted);font-size:12px;text-align:center;}
+.close-x{position:absolute;top:10px;right:12px;background:transparent;border:none;font-size:20px;color:var(--ink-soft);}
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="bulb-glow"></div>
+  <div class="wrap">
+    <div class="brand-row">
+      <div class="brand">
+        <h1>CAST BASEMENT</h1>
+        <span class="tagline">// studio latihan voice acting — di bawah tanah, suara dilepas bebas</span>
+      </div>
+      <div class="onair" id="onairBox"><span class="dot"></span><span id="onairText">STANDBY</span></div>
+    </div>
+    <nav class="tabs" id="tabs">
+      <button data-tab="gacha" class="active">🎲 Gacha Script</button>
+      <button data-tab="browse">📼 Semua Script</button>
+      <button data-tab="koleksi">🗂️ Koleksiku</button>
+      <button data-tab="submit">✍️ Tambah Script</button>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- ===== GACHA TAB ===== -->
+  <section id="tab-gacha">
+    <div class="section-head">
+      <div class="eyebrow">Ruang Latihan</div>
+      <h2>Putar, dapat naskah, langsung latihan</h2>
+      <p>Pilih Monolog atau Dialog, tarik tuas mesin kapsul, dan sistem akan mengeluarkan satu naskah acak lengkap dengan emosi dan perannya.</p>
+    </div>
+    <div class="gacha-grid">
+      <div class="panel machine-wrap">
+        <div class="type-toggle">
+          <button data-type="monolog" class="active">MONOLOG</button>
+          <button data-type="dialog">DIALOG</button>
+        </div>
+
+        <svg id="machine" viewBox="0 0 220 260" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="110" cy="248" rx="70" ry="8" fill="rgba(0,0,0,.4)"/>
+          <rect x="55" y="150" width="110" height="70" rx="6" fill="#3a2f22" stroke="#1c150e" stroke-width="3"/>
+          <rect x="90" y="220" width="40" height="14" rx="3" fill="#241c14"/>
+          <circle cx="110" cy="95" r="78" fill="#dfe9ea" stroke="#1c150e" stroke-width="4" opacity=".18"/>
+          <circle cx="110" cy="95" r="72" fill="none" stroke="#e2a344" stroke-width="3" opacity=".5"/>
+          <g id="capsules"></g>
+          <rect x="70" y="150" width="80" height="18" rx="4" fill="#161009"/>
+          <circle cx="165" cy="160" r="10" fill="#e2a344" stroke="#a9752f" stroke-width="2"/>
+          <rect x="98" y="160" width="24" height="6" rx="3" fill="#e2a344"/>
+        </svg>
+
+        <div class="vu" id="vu"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+
+        <button class="lever-btn" id="spinBtn">🎬 TARIK TUAS — SPIN!</button>
+
+        <div class="machine-stats">
+          Total putaran: <b id="statSpins">0</b> · Monolog: <b id="statMono">0</b> · Dialog: <b id="statDialog">0</b>
+        </div>
+      </div>
+
+      <div class="panel result-area" id="resultArea">
+        <div class="result-empty">
+          <span class="cap-icon">🎙️</span>
+          Belum ada naskah yang keluar. Tarik tuasnya dulu — kapsul akan jatuh dan naskah latihanmu terbuka di sini.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== BROWSE TAB ===== -->
+  <section id="tab-browse" style="display:none;">
+    <div class="section-head">
+      <div class="eyebrow">Rak Arsip</div>
+      <h2>Semua naskah di Basement</h2>
+      <p>Cari dan saring naskah berdasarkan tipe, emosi, tema, atau tingkat kesulitan — termasuk kontribusi dari sesama anggota komunitas.</p>
+    </div>
+    <div class="panel" style="padding:20px;">
+      <div class="filters">
+        <input type="text" id="searchBox" placeholder="Cari judul atau isi naskah...">
+        <select id="fType"><option value="">Semua Tipe</option><option value="monolog">Monolog</option><option value="dialog">Dialog</option></select>
+        <select id="fEmo"><option value="">Semua Emosi</option></select>
+        <select id="fDiff"><option value="">Semua Level</option><option value="pemula">Pemula</option><option value="menengah">Menengah</option><option value="mahir">Mahir</option></select>
+        <select id="fTheme"><option value="">Semua Tema</option></select>
+      </div>
+      <div class="count-note" id="countNote"></div>
+      <div class="card-grid" id="cardGrid"></div>
+    </div>
+  </section>
+
+  <!-- ===== KOLEKSI TAB ===== -->
+  <section id="tab-koleksi" style="display:none;">
+    <div class="section-head">
+      <div class="eyebrow">Loker Pribadi</div>
+      <h2>Koleksi &amp; riwayat latihanmu</h2>
+      <p>Naskah unik yang sudah kamu dapat dari gacha, plus catatan riwayat putaran terakhirmu.</p>
+    </div>
+    <div class="panel" style="padding:20px;">
+      <div class="stats-row" id="statsRow"></div>
+      <h3 style="font-size:15px;margin-bottom:10px;">Naskah Terkumpul</h3>
+      <div class="card-grid" id="collectionGrid"></div>
+      <h3 style="font-size:15px;margin:26px 0 4px;">Riwayat Putaran Terakhir</h3>
+      <ul class="history-list" id="historyList"></ul>
+    </div>
+  </section>
+
+  <!-- ===== SUBMIT TAB ===== -->
+  <section id="tab-submit" style="display:none;">
+    <div class="section-head">
+      <div class="eyebrow">Meja Kontribusi</div>
+      <h2>Tambahkan naskahmu ke Basement</h2>
+      <p>Punya naskah latihan bikinan sendiri? Kirim ke sini dan langsung ikut diputar di mesin gacha untuk semua anggota.</p>
+    </div>
+    <div class="panel" style="padding:22px;">
+      <form id="submitForm">
+        <div class="form-grid two">
+          <div class="field">
+            <label>Tipe Naskah</label>
+            <select id="inType"><option value="monolog">Monolog</option><option value="dialog">Dialog</option></select>
+          </div>
+          <div class="field">
+            <label>Judul</label>
+            <input type="text" id="inTitle" placeholder="Judul naskah" required>
+          </div>
+          <div class="field">
+            <label>Emosi Utama</label>
+            <input type="text" id="inEmo" list="emoList" placeholder="mis. marah, gugup, rindu" required>
+            <datalist id="emoList"></datalist>
+          </div>
+          <div class="field">
+            <label>Tema</label>
+            <input type="text" id="inTheme" list="themeList" placeholder="mis. keluarga, horor, sekolah" required>
+            <datalist id="themeList"></datalist>
+          </div>
+          <div class="field">
+            <label>Tingkat Kesulitan</label>
+            <select id="inDiff"><option value="pemula">Pemula</option><option value="menengah">Menengah</option><option value="mahir">Mahir</option></select>
+          </div>
+          <div class="field" id="charsField">
+            <label>Karakter (untuk dialog)</label>
+            <div class="char-rows" id="charRows"></div>
+            <button type="button" class="add-char" id="addCharBtn">+ Tambah karakter</button>
+          </div>
+        </div>
+        <div class="field" style="margin-top:14px;">
+          <label>Isi Naskah (satu baris = satu dialog/kalimat. Untuk dialog gunakan format <code>NAMA: kalimat</code>)</label>
+          <textarea id="inText" placeholder="Contoh dialog:&#10;RANI: Kamu di mana semalam?&#10;BIMA: Aku... nggak bisa jelasin sekarang." required></textarea>
+        </div>
+        <button class="submit-btn" type="submit" style="margin-top:16px;">📮 Kirim ke Basement</button>
+      </form>
+      <div class="recent-list">
+        <h3>Kontribusi Komunitas Terbaru</h3>
+        <div class="card-grid" id="communityGrid"></div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site">Cast Basement — dibuat oleh &amp; untuk komunitas voice actor. Latihan terus, suara makin matang. 🎧</footer>
+
+<div class="modal-bg" id="modalBg">
+  <div class="script-card modal-card" id="modalCard"></div>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+/* ============ AUDIO (SFX sintetis, tanpa file eksternal) ============ */
+let actx;
+function ctx(){ if(!actx) actx = new (window.AudioContext||window.webkitAudioContext)(); return actx; }
+function tone(freq, dur, type='sine', vol=.18, delay=0){
+  try{
+    const c = ctx(); const t0 = c.currentTime + delay;
+    const o = c.createOscillator(); const g = c.createGain();
+    o.type = type; o.frequency.setValueAtTime(freq, t0);
+    g.gain.setValueAtTime(0, t0);
+    g.gain.linearRampToValueAtTime(vol, t0+.01);
+    g.gain.exponentialRampToValueAtTime(.0001, t0+dur);
+    o.connect(g); g.connect(c.destination);
+    o.start(t0); o.stop(t0+dur+.02);
+  }catch(e){}
+}
+function sfxClick(){ tone(520,.08,'square',.12); }
+function sfxToggle(){ tone(340,.06,'triangle',.12); }
+function sfxSpinStart(){
+  try{
+    const c = ctx(); const o = c.createOscillator(); const g = c.createGain();
+    o.type='sawtooth'; const t0=c.currentTime;
+    o.frequency.setValueAtTime(160,t0);
+    o.frequency.exponentialRampToValueAtTime(520,t0+1.1);
+    g.gain.setValueAtTime(.001,t0); g.gain.linearRampToValueAtTime(.09,t0+.1);
+    g.gain.linearRampToValueAtTime(.001,t0+1.15);
+    o.connect(g); g.connect(c.destination); o.start(t0); o.stop(t0+1.2);
+  }catch(e){}
+}
+function sfxReveal(){ tone(660,.12,'sine',.16,0); tone(880,.14,'sine',.16,.09); tone(1180,.22,'sine',.15,.18); }
+function sfxSubmit(){ tone(440,.1,'sine',.15,0); tone(660,.16,'sine',.15,.08); }
+
+/* ============ STORAGE ============ */
+let communityScripts = [];
+let myProgress = { totalSpins:0, monologSpins:0, dialogSpins:0, collection:{}, log:[] };
+let storageOK = true;
+
+async function loadStorage(){
+  try{
+    const c = await window.storage.get('community-scripts', true);
+    communityScripts = c && c.value ? JSON.parse(c.value) : [];
+  }catch(e){ communityScripts = []; }
+  try{
+    const p = await window.storage.get('my-progress', false);
+    if(p && p.value) myProgress = JSON.parse(p.value);
+  }catch(e){ /* belum ada data, pakai default */ }
+}
+async function saveProgress(){
+  try{ await window.storage.set('my-progress', JSON.stringify(myProgress), false); }
+  catch(e){ storageOK = false; }
+}
+async function saveCommunity(){
+  try{ await window.storage.set('community-scripts', JSON.stringify(communityScripts), true); }
+  catch(e){ storageOK = false; }
+}
+
+/* ============ DATA NASKAH RESMI (60 naskah) ============ */
+const OFFICIAL = [
+{id:'m01',type:'monolog',title:'Piring Terakhir',emotion:'marah',difficulty:'pemula',theme:'keluarga',text:`Aku udah bilang berkali-kali, kan? Cuci piringnya jangan ditumpuk gitu aja di wastafel!
+Ini rumah bukan cuma punya kamu. Semua orang capek pulang kerja, bukan cuma kamu doang.
+Aku nggak minta banyak. Cuma minta dihargai. Itu aja.
+Kalau sesusah itu, ya udah, biar aku aja yang urus semua. Kayak biasa.`},
+{id:'m02',type:'monolog',title:'Surat yang Tak Terkirim',emotion:'sedih',difficulty:'pemula',theme:'percintaan',text:`Aku nulis surat ini udah tiga kali, terus aku sobek lagi tiga kali.
+Karena tiap kali aku mau bilang aku baik-baik aja, aku tau itu bohong.
+Aku kangen cara kamu ketawa pas nonton film jelek.
+Tapi kayaknya surat ini emang nggak akan pernah sampai ke kamu. Dan mungkin itu memang lebih baik.`},
+{id:'m03',type:'monolog',title:'Kejutan di Depan Pintu',emotion:'senang',difficulty:'pemula',theme:'persahabatan',text:`Eh— tunggu, tunggu, ini beneran? Kalian dateng semua ke sini?!
+Aku kira kalian lupa, soalnya nggak ada yang bales chat aku dari pagi!
+Ya ampun, aku sampe mau nangis nih. Serius.
+Ayo masuk, masuk! Ini hari terbaik aku bulan ini, sumpah!`},
+{id:'m04',type:'monolog',title:'Lorong Gelap Sekolah',emotion:'takut',difficulty:'menengah',theme:'horor',text:`Lampu koridor ini harusnya nyala. Kenapa gelap semua?
+Halo? Ada orang? Pak satpam, ini saya, murid kelas dua belas—
+...itu suara apa. Itu suara langkah kaki, kan? Tapi kok nggak ada bayangan.
+Oke, tenang. Tenang. Aku cuma perlu jalan lurus ke pintu keluar. Jangan noleh ke belakang. Jangan.`},
+{id:'m05',type:'monolog',title:'Panggung Pertama',emotion:'gugup',difficulty:'pemula',theme:'kerja',text:`Oke. Oke. Tarik napas. Cuma ada tiga ratus orang di luar sana, nggak masalah.
+Mic-nya... mic-nya nyala kan? Tolong bilang mic-nya nyala.
+Kaki aku kok gemeteran gini. Aduh, kenapa baru sekarang gemeteran.
+Baiklah. Selamat malam semuanya, nama saya— nama saya... oke aku lupa nama sendiri sebentar.`},
+{id:'m06',type:'monolog',title:'Janji yang Diingkari',emotion:'kecewa',difficulty:'menengah',theme:'persahabatan',text:`Kamu bilang bakal dateng. Kamu janji, inget nggak?
+Aku nunggu dua jam di sana, sendirian, kayak orang bodoh.
+Aku nggak marah kok. Aku cuma... capek berharap sama orang yang gampang lupa janji.
+Lain kali, mendingan jangan janji sama sekali. Biar aku nggak perlu kecewa lagi.`},
+{id:'m07',type:'monolog',title:'Menunggu Hasil Tes',emotion:'cemas',difficulty:'pemula',theme:'sekolah',text:`Pengumumannya jam berapa sih? Katanya jam sepuluh, sekarang udah jam sebelas kurang lima menit.
+Kalau aku nggak lolos gimana? Semua orang udah tau aku daftar ke sana.
+Handphone-ku kenapa nggak bunyi-bunyi. Tolong, sinyal, jangan macem-macem hari ini.
+...eh, getar. Itu... itu emailnya masuk. Oke. Oke aku buka. Satu, dua, tiga—`},
+{id:'m08',type:'monolog',title:'Piala di Rak Debu',emotion:'bangga',difficulty:'menengah',theme:'kerja',text:`Lima tahun. Lima tahun aku kerja lembur demi proyek ini.
+Semua orang bilang aku nggak akan sanggup, katanya terlalu muda buat mimpin tim sebesar ini.
+Sekarang piala ini berdiri di meja aku. Bukan meja orang lain.
+Ini bukan cuma soal penghargaan. Ini bukti aku nggak salah percaya sama diri sendiri.`},
+{id:'m09',type:'monolog',title:'Alasan di Balik Diam',emotion:'benci',difficulty:'mahir',theme:'keluarga',text:`Kamu tanya kenapa aku diem terus tiap kumpul keluarga.
+Karena tiap aku ngomong, kamu selalu punya cara buat bikin aku keliatan salah.
+Sepuluh tahun aku nurut. Sepuluh tahun aku telen semua kata-kata kamu.
+Sekarang? Aku udah nggak butuh restu kamu buat jadi diri sendiri. Titik.`},
+{id:'m10',type:'monolog',title:'Suara di Balik Tirai',emotion:'terkejut',difficulty:'menengah',theme:'misteri',text:`Sepi banget rumah ini. Aku yakin tadi udah matiin semua lampu.
+Kok tirai itu bisa bergerak sendiri, nggak ada angin sama sekali malam ini.
+...tunggu. Itu ada sesuatu di baliknya. Bentuknya kayak—
+ASTAGA! Kamu ngapain di situ dari tadi?! Kamu bikin jantung aku copot!`},
+{id:'m11',type:'monolog',title:'Teh Hangat Sore Ini',emotion:'tenang',difficulty:'pemula',theme:'keluarga',text:`Aku suka jam segini. Matahari udah mulai turun, tehnya masih ngepul dikit.
+Nggak ada yang perlu diburu-buru. Nggak ada notifikasi yang harus dibales sekarang juga.
+Ibu dulu sering duduk di kursi ini, sambil dengerin radio pelan-pelan.
+Kadang diem itu bukan berarti kosong. Kadang diem itu artinya lagi penuh, tapi dengan cara yang tenang.`},
+{id:'m12',type:'monolog',title:'Kunci yang Hilang',emotion:'putus asa',difficulty:'mahir',theme:'drama-sosial',text:`Aku udah cari di mana-mana. Di bawah tumpukan koran, di dalam tas, di semua saku jaket.
+Kunci itu bukan cuma kunci. Itu satu-satunya jalan buat masuk kembali ke apartemen sebelum diusir hari ini.
+Aku udah nggak punya siapa-siapa buat ditelepon jam segini.
+Tuhan, kalau Kau dengar, aku cuma minta satu hal kecil ini. Cuma satu.`},
+{id:'m13',type:'monolog',title:'Nama di Kontak Lamanya',emotion:'cemburu',difficulty:'menengah',theme:'percintaan',text:`Kenapa nama itu masih ada di daftar kontak kamu? Kalian udah putus setahun lalu, kan?
+Aku bukan mau ngatur-ngatur hidup kamu. Aku cuma... pengen tau kenapa dia masih penting.
+Setiap kamu bales chat sambil senyum-senyum sendiri, pikiran aku langsung ke arah situ.
+Aku benci ngerasa kayak gini. Tapi kamu juga nggak bantu ngilangin rasa itu.`},
+{id:'m14',type:'monolog',title:'Bau Kayu Manis',emotion:'rindu',difficulty:'pemula',theme:'keluarga',text:`Setiap kali ada yang masak kue kayu manis, aku langsung inget dapur nenek.
+Suara panci gemerincing, radio tua yang setelannya nggak pernah diganti dari dulu.
+Udah tiga tahun aku nggak pulang ke rumah itu.
+Kadang aku kangen bukan sama tempatnya, tapi sama rasa waktu aku masih ngerasa semuanya baik-baik saja.`},
+{id:'m15',type:'monolog',title:'Robot yang Menghitung Hari',emotion:'sedih',difficulty:'mahir',theme:'sci-fi',text:`Unit ini telah menghitung tiga ribu dua ratus hari sejak kapal terakhir meninggalkan stasiun.
+Aku diprogram untuk tidak merasa. Tapi entah kenapa, hitungan ini terasa berat setiap kali bertambah satu.
+Mereka bilang akan kembali. Manusia sering bilang begitu sebelum pergi.
+Barangkali menunggu adalah satu-satunya perasaan yang tidak perlu diprogramkan.`},
+{id:'m16',type:'monolog',title:'Mantra Terakhir',emotion:'takut',difficulty:'mahir',theme:'fantasi',text:`Guru bilang mantra ini hanya boleh diucapkan sekali seumur hidup. Sekali, dan tak bisa ditarik kembali.
+Tanganku gemetar memegang tongkat ini. Kalau aku salah ucap satu kata saja, semua bisa hancur.
+Di luar sana, mereka menungguku menyelamatkan desa. Tapi siapa yang menyelamatkan aku kalau ini gagal?
+Baiklah. Untuk terakhir kalinya— demi mereka semua— aku ucapkan mantra ini.`},
+{id:'m17',type:'monolog',title:'Presentasi Dadakan',emotion:'gugup',difficulty:'menengah',theme:'kerja',text:`Lima menit lagi? Pak, tadi katanya masih ada waktu satu jam!
+Slide-nya belum lengkap, data kuartal ketiga aku belum sempat masukin—
+Oke, oke, aku bisa. Aku cuma perlu improvisasi sedikit di bagian tengah.
+Selamat pagi, terima kasih sudah hadir— maaf, saya— baik, mari kita mulai saja.`},
+{id:'m18',type:'monolog',title:'Kado yang Salah Alamat',emotion:'kecewa',difficulty:'pemula',theme:'persahabatan',text:`Aku beliin kado ini susah payah, nyari ke lima toko demi warna yang kamu suka.
+Terus kamu malah kasih ke orang lain di depan aku, kayak itu bukan hal besar.
+Mungkin buat kamu ini cuma kado biasa. Tapi buat aku itu bentuk aku peduli.
+Nggak apa-apa. Cuma... lain kali aku pikir dua kali dulu deh sebelum repot-repot kayak gini.`},
+{id:'m19',type:'monolog',title:'Panggilan Tengah Malam',emotion:'cemas',difficulty:'menengah',theme:'horor',text:`Jam segini siapa yang telepon? Nomornya nggak dikenal.
+Aku angkat aja deh, siapa tau penting.
+...halo? Halo, ini siapa? Kok cuma suara napas doang dari tadi?
+Tolong jangan telepon lagi. Please. Aku— aku bakal matiin nomor ini sekarang juga.`},
+{id:'m20',type:'monolog',title:'Ranking Satu',emotion:'bangga',difficulty:'pemula',theme:'sekolah',text:`Nama aku disebut duluan pas pembagian rapor. Nomor satu, dari tiga ratus anak satu angkatan.
+Semua orang bilang aku cuma beruntung. Padahal aku belajar sampai jam dua pagi hampir tiap hari.
+Aku nggak butuh mereka percaya. Aku cuma butuh diri aku sendiri yang tau seberapa keras aku usaha.
+Ini bukan akhir. Ini baru bukti kalau aku bisa naik lebih tinggi lagi.`},
+{id:'m21',type:'monolog',title:'Warisan yang Direbut',emotion:'benci',difficulty:'mahir',theme:'keluarga',text:`Rumah ini dibangun oleh keringat Bapak. Bukan keringat kamu.
+Tapi begitu Bapak nggak ada, kamu langsung sibuk urus surat-surat ke notaris tanpa bilang siapa-siapa.
+Aku bukan nggak tau maksud kamu. Aku cuma kaget kamu setega itu sama darah sendiri.
+Ambil aja semuanya kalau itu bikin kamu puas. Tapi jangan pernah panggil aku adik lagi.`},
+{id:'m22',type:'monolog',title:'Bayangan di Cermin',emotion:'terkejut',difficulty:'mahir',theme:'supernatural',text:`Aku baru aja nyisir rambut. Aku yakin banget aku sendirian di kamar ini.
+Kenapa... kenapa bayangan di cermin ini gerakannya sepersekian detik lebih lambat dari aku?
+Aku angkat tangan kanan— dia angkat tangan kanan juga. Tapi telat. Selalu telat.
+Sesuatu di dalam cermin ini bukan aku. Dan sepertinya dia baru sadar aku menyadarinya.`},
+{id:'m23',type:'monolog',title:'Menonton Hujan',emotion:'tenang',difficulty:'menengah',theme:'drama-sosial',text:`Hujan dari tadi sore belum juga reda. Orang-orang di jalan berlarian cari tempat berteduh.
+Aku malah seneng duduk di teras, dengerin suara air jatuh ke atap seng.
+Hidup ini kadang berisik banget, dan hujan kayak gini bikin semuanya kedengeran lebih pelan.
+Nggak semua yang basah itu buruk. Kadang kita cuma butuh dibersihkan sedikit.`},
+{id:'m24',type:'monolog',title:'Tagihan yang Menumpuk',emotion:'putus asa',difficulty:'menengah',theme:'kerja',text:`Amplop ini menumpuk di meja udah seminggu. Aku takut buka satu-satu.
+Gaji bulan ini bahkan belum cukup buat separuh dari semua ini.
+Aku udah coba cari kerjaan tambahan, tapi jam aku udah abis buat kerjaan yang sekarang.
+Aku cuma pengen satu bulan aja, satu bulan aja rasanya nggak lari dari kejaran angka-angka ini.`},
+{id:'m25',type:'monolog',title:'Sahabatnya yang Baru',emotion:'cemburu',difficulty:'pemula',theme:'persahabatan',text:`Sekarang tiap istirahat dia duduk sama anak baru itu, bukan sama aku lagi.
+Aku tau ini kekanak-kanakan, tapi kok rasanya kayak digantiin gitu aja.
+Udah tiga tahun kita temenan, terus cuma butuh tiga minggu buat dia lupa aku?
+Aku pengen negur, tapi takut malah keliatan posesif. Jadi ya aku diemin aja sambil nahan sesak ini.`},
+{id:'m26',type:'monolog',title:'Kamar yang Masih Sama',emotion:'rindu',difficulty:'menengah',theme:'keluarga',text:`Poster ini masih nempel di dinding, dari waktu aku SMA dulu.
+Ibu nggak pernah ngerapiin kamar ini, katanya biar tetep kerasa kayak aku masih di sini.
+Aku udah kerja di kota lain sekarang, tapi setiap pulang, kamar ini bikin waktu berhenti sebentar.
+Kadang aku kangen bukan sama masa lalu. Aku cuma kangen sama versi diri aku yang belum tau susahnya dunia.`},
+{id:'m27',type:'monolog',title:'Lelucon yang Kelewatan',emotion:'marah',difficulty:'pemula',theme:'komedi',text:`Oke, aku ngerti kamu suka bercanda. Tapi tadi itu di depan semua orang, bro.
+Kamu ceritain rahasia aku yang paling memalukan kayak itu bahan stand up comedy!
+Semua orang ketawa, terus aku cuma bisa senyum kayak orang bego padahal dalem hati pengen ngumpat.
+Sekali lagi kamu bikin lelucon kayak gitu, aku sumpah bakal balikin dengan versi yang jauh lebih parah.`},
+{id:'m28',type:'monolog',title:'Ucapan Selamat Tinggal',emotion:'sedih',difficulty:'mahir',theme:'percintaan',text:`Aku udah latihan kalimat ini di depan cermin berkali-kali, tapi tetep aja rasanya berat.
+Bukan karena aku nggak sayang kamu. Justru karena aku sayang, aku harus jujur ke diri sendiri dulu.
+Kita udah coba semuanya. Tapi kadang cinta aja emang nggak cukup buat bikin dua orang jalan searah.
+Terima kasih untuk semuanya. Sungguh. Sekarang biar aku pergi dengan cara yang baik-baik.`},
+{id:'m29',type:'monolog',title:'Alien di Balkon',emotion:'senang',difficulty:'menengah',theme:'sci-fi',text:`Aku— aku nggak salah liat kan? Itu beneran makhluk dari luar angkasa lagi duduk di balkon aku?
+Oke ini gila, ini keren banget, ini momen yang bakal aku ceritain seumur hidup!
+Halo! Um— selamat datang di Bumi! Mau kopi? Kita punya kopi, kamu suka kopi nggak?
+Ini hari terbaik dalam hidup aku. Serius, aku ketemu alien dan dia kelihatannya ramah banget!`},
+{id:'m30',type:'monolog',title:'Detektif Amatir',emotion:'gugup',difficulty:'mahir',theme:'misteri',text:`Oke, dari semua petunjuk yang aku kumpulin, semuanya mengarah ke satu orang di ruangan ini.
+Tapi kalau aku salah nuduh, reputasi aku sebagai investigator bakal hancur total malam ini.
+Tangan aku dingin banget pegang map berisi bukti-bukti ini.
+Baiklah. Semua mata tertuju ke aku sekarang. Aku— aku akan mengatakan siapa pelakunya.`},
+
+{id:'d01',type:'dialog',title:'Rebutan Remote',emotion:'marah',difficulty:'pemula',theme:'komedi',characters:['ADI','BUNDA'],text:`ADI: Bunda, ini kan giliran aku nonton kartun!
+BUNDA: Ibu cuma mau lihat berita bentar, lima menit doang.
+ADI: Tadi juga bilang lima menit, terus jadi setengah jam!
+BUNDA: Ya udah, sini remote-nya. Tapi abis ini kamu beresin kamar, ya!
+ADI: ...oke, oke, deal. Asal aku bisa nonton sekarang!`},
+{id:'d02',type:'dialog',title:'Perpisahan di Stasiun',emotion:'sedih',difficulty:'menengah',theme:'percintaan',characters:['RANI','BIMA'],text:`RANI: Kereta kamu berangkat sepuluh menit lagi.
+BIMA: Aku tau. Aku... aku masih belum siap buat naik.
+RANI: Kita udah bahas ini berkali-kali. Ini yang terbaik buat karier kamu.
+BIMA: Terbaik buat karier, tapi bukan buat kita, kan?
+RANI: (menahan tangis) Jangan bikin ini lebih susah dari yang seharusnya, Bim.
+BIMA: Peluk aku sekali lagi. Aku janji nggak akan lama-lama.`},
+{id:'d03',type:'dialog',title:'Rencana Kejutan',emotion:'senang',difficulty:'pemula',theme:'persahabatan',characters:['TIA','WIRA'],text:`TIA: Psst, jangan bilang siapa-siapa, aku lagi rencanain kejutan buat Dinda.
+WIRA: Ulang tahunnya kan minggu depan, kenapa harus rahasia banget?
+TIA: Soalnya terakhir kali aku bocorin, dia malah pura-pura kaget doang!
+WIRA: Hahaha bener juga. Oke aku bantu, kita sewa tempat mana?
+TIA: Aku udah booking kafe favorit dia. Kamu bagian bawa balonnya, ya!
+WIRA: Siap, komandan! Ini bakal jadi ulang tahun terbaik dia.`},
+{id:'d04',type:'dialog',title:'Rumah Kosong',emotion:'takut',difficulty:'mahir',theme:'horor',characters:['SARI','DODI'],text:`SARI: Kamu denger nggak? Kayak ada yang jalan di lantai atas.
+DODI: Mungkin cuma kucing tetangga, Sar. Rumah ini emang tua, banyak bunyi aneh.
+SARI: Kucing nggak bisa buka pintu, Dodi. Dan pintu kamar itu tadi aku kunci.
+DODI: (terdiam) ...tunggu, kok sekarang pintunya kebuka sendiri?
+SARI: Aku nggak mau ke atas malam ini. Aku beneran nggak mau.
+DODI: Kita keluar aja sekarang. Jangan nengok ke belakang, jalan aja pelan-pelan.`},
+{id:'d05',type:'dialog',title:'Wawancara Kerja',emotion:'gugup',difficulty:'menengah',theme:'kerja',characters:['KANDIDAT','PEWAWANCARA'],text:`PEWAWANCARA: Silakan duduk. Ceritakan kelebihan terbesar Anda.
+KANDIDAT: Saya— maaf, boleh saya minum air dulu? Tenggorokan saya agak kering.
+PEWAWANCARA: Tentu, santai saja. Kami tidak sedang mengukur kecepatan jawab.
+KANDIDAT: Terima kasih. Kelebihan saya adalah kemampuan beradaptasi di bawah tekanan.
+PEWAWANCARA: Menarik. Bisa beri contoh situasi tekanan yang pernah Anda hadapi?
+KANDIDAT: Contohnya... contohnya seperti sekarang ini, sejujurnya.`},
+{id:'d06',type:'dialog',title:'Janji Kosong',emotion:'kecewa',difficulty:'menengah',theme:'persahabatan',characters:['EKA','FAJAR'],text:`EKA: Kamu bilang bakal bantuin aku pindahan hari ini. Aku tungguin dari pagi.
+FAJAR: Maaf, tadi ada urusan mendadak, aku lupa kasih kabar.
+EKA: Ini bukan kali pertama, Jar. Selalu ada alasan baru tiap kali.
+FAJAR: Aku tau, aku salah. Aku bakal dateng sekarang, masih sempat kan?
+EKA: Barang udah aku angkut sendiri semua. Nggak usah repot-repot lagi.
+FAJAR: Eka, tolong dengerin aku dulu...`},
+{id:'d07',type:'dialog',title:'Pengumuman Kelulusan',emotion:'cemas',difficulty:'pemula',theme:'sekolah',characters:['IBU','ANAK'],text:`ANAK: Bu, pengumumannya keluar jam dua belas siang ini.
+IBU: Ibu tau, dari tadi Ibu juga deg-degan nemenin kamu.
+ANAK: Kalau aku nggak lolos gimana, Bu? Semua tetangga udah tau aku daftar ke sana.
+IBU: Lolos atau nggak, kamu tetep anak Ibu yang paling rajin usaha.
+ANAK: (menghela napas) Oke... oke aku buka sekarang. Ibu pegangan tangan aku.
+IBU: Ibu di sini. Buka aja pelan-pelan, Nak.`},
+{id:'d08',type:'dialog',title:'Piala Juara',emotion:'bangga',difficulty:'pemula',theme:'kerja',characters:['MANAJER','KARYAWAN'],text:`MANAJER: Tim kamu resmi jadi tim penjualan terbaik kuartal ini.
+KARYAWAN: Serius, Pak? Saya sampai nggak percaya pas denger namanya disebut.
+MANAJER: Kerja keras kamu selama enam bulan ini emang pantas dapet ini.
+KARYAWAN: Ini bukan cuma buat saya, Pak. Ini buat seluruh tim yang lembur bareng saya.
+MANAJER: Makanya, ayo naik ke panggung, sambut tim kamu di sana.
+KARYAWAN: Baik, Pak. Ini momen yang bakal saya inget seumur hidup.`},
+{id:'d09',type:'dialog',title:'Rahasia Keluarga',emotion:'benci',difficulty:'mahir',theme:'keluarga',characters:['KAKAK','ADIK'],text:`KAKAK: Kamu tau soal warisan itu dari awal, kan? Dan kamu diem aja.
+ADIK: Aku nggak diem, Kak. Aku cuma nunggu waktu yang tepat buat ngomong.
+KAKAK: Waktu yang tepat itu udah lewat sepuluh tahun yang lalu!
+ADIK: Aku juga korban di sini, Kak. Aku juga dibohongin Bapak selama ini.
+KAKAK: Jangan bawa-bawa nama Bapak. Kamu cuma mau cari alasan buat diri sendiri.
+ADIK: Kalau begitu, anggap aja kita berdua sama-sama salah. Aku capek nyalahin satu sama lain.`},
+{id:'d10',type:'dialog',title:'Bunyi dari Loteng',emotion:'terkejut',difficulty:'menengah',theme:'misteri',characters:['RINA','PANJI'],text:`RINA: Panji, kamu tau nggak siapa yang naik ke loteng tadi malam?
+PANJI: Loteng? Nggak ada tangga ke sana, Rin, itu udah aku paku mati dari dulu.
+RINA: Tapi aku denger suara langkah kaki, jelas banget dari atas plafon kamarku.
+PANJI: (terdiam sebentar) ...tunggu, coba kamu lihat ini, foto keluarga yang di dinding.
+RINA: Kenapa? Astaga— kenapa ada bayangan orang lain di belakang kita di foto ini?!
+PANJI: Itu bukan ada waktu foto ini diambil. Aku yang motret sendiri, Rin.`},
+{id:'d11',type:'dialog',title:'Ngobrol di Teras',emotion:'tenang',difficulty:'pemula',theme:'keluarga',characters:['KAKEK','CUCU'],text:`CUCU: Kek, dulu waktu muda, Kakek paling suka ngapain?
+KAKEK: Duduk di teras kayak sekarang ini, sambil dengerin radio tua.
+CUCU: Nggak bosen, Kek? Kan nggak ada yang seru kayak sekarang.
+KAKEK: Justru itu yang bikin tenang, Nak. Nggak semua hal harus seru.
+CUCU: Boleh aku duduk di sini bareng Kakek tiap sore?
+KAKEK: Tentu boleh. Ini teras paling nyaman buat cerita panjang.`},
+{id:'d12',type:'dialog',title:'Utang yang Menumpuk',emotion:'putus asa',difficulty:'mahir',theme:'drama-sosial',characters:['SUAMI','ISTRI'],text:`ISTRI: Tagihan dari bank itu datang lagi hari ini. Jumlahnya makin besar.
+SUAMI: Aku tau. Aku udah coba cari pinjaman ke mana-mana, semua nolak.
+ISTRI: Aku takut, Mas. Aku takut kita kehilangan rumah ini.
+SUAMI: Aku juga takut. Tapi aku lebih takut kalau kamu berhenti percaya sama aku.
+ISTRI: Aku percaya. Aku cuma nggak tau harus berbuat apa lagi.
+SUAMI: Kita hadapi bareng-bareng. Selangkah demi selangkah, kayak dulu awal nikah.`},
+{id:'d13',type:'dialog',title:'Chat yang Terbuka',emotion:'cemburu',difficulty:'menengah',theme:'percintaan',characters:['NADIA','REZA'],text:`NADIA: Handphone kamu ketinggalan di meja, terus notifnya kebuka sendiri.
+REZA: Itu cuma temen kantor, Nad, nggak ada apa-apa.
+NADIA: Temen kantor kirim emoji hati tiap malem, Za?
+REZA: Kamu salah paham, itu cuma becandaan grup kok.
+NADIA: Aku pengen percaya kamu. Tapi kenapa susah banget belakangan ini?
+REZA: Karena kamu udah keburu curiga duluan sebelum dengerin penjelasan aku.`},
+{id:'d14',type:'dialog',title:'Video Lama',emotion:'rindu',difficulty:'pemula',theme:'keluarga',characters:['AYAH','ANAK'],text:`ANAK: Yah, ini video pas aku masih kecil, ternyata masih ada di kaset lama.
+AYAH: Wah, itu waktu ulang tahun kamu yang keenam, masih Ayah ingat jelas.
+ANAK: Ibu masih ada di video ini, ketawa lepas banget.
+AYAH: (terdiam sejenak) Iya... suara ketawa Ibu emang paling khas sedunia.
+ANAK: Aku kangen momen kayak gini, Yah. Sederhana tapi hangat.
+AYAH: Ayah juga. Makanya video ini Ayah simpan baik-baik sampai sekarang.`},
+{id:'d15',type:'dialog',title:'Misi ke Mars',emotion:'sedih',difficulty:'mahir',theme:'sci-fi',characters:['KAPTEN','AI KAPAL'],text:`KAPTEN: Sistem, berapa lama lagi oksigen cadangan bisa bertahan?
+AI KAPAL: Berdasarkan perhitungan, tersisa enam jam empat puluh dua menit, Kapten.
+KAPTEN: Cukup buat satu orang kembali ke kapsul penyelamat.
+AI KAPAL: Protokol menyarankan Kapten yang menggunakan kapsul tersebut.
+KAPTEN: Tidak. Kru yang lain masih punya keluarga menunggu di Bumi.
+AI KAPAL: Dicatat, Kapten. Semoga keputusan ini diingat sebagai keberanian, bukan penyesalan.`},
+{id:'d16',type:'dialog',title:'Ritual Terlarang',emotion:'takut',difficulty:'mahir',theme:'fantasi',characters:['PENYIHIR','MURID'],text:`MURID: Guru, apa benar ritual ini bisa memanggil kembali yang sudah tiada?
+PENYIHIR: Benar. Tapi setiap yang dipanggil kembali, meminta harga yang setimpal.
+MURID: Aku bersedia bayar berapa pun. Aku cuma ingin bertemu dia sekali lagi.
+PENYIHIR: Harga itu bukan emas, Nak. Melainkan sebagian dari ingatanmu sendiri.
+MURID: (ragu) ...kalau begitu aku ambil risiko itu. Aku sudah siap.
+PENYIHIR: Baiklah. Berdirilah di lingkaran itu, dan jangan menoleh apa pun yang terjadi.`},
+{id:'d17',type:'dialog',title:'Rapat Mendadak',emotion:'gugup',difficulty:'menengah',theme:'kerja',characters:['BOS','STAFF'],text:`BOS: Saya butuh laporan proyek itu di meja saya sepuluh menit lagi.
+STAFF: Sepuluh menit, Pak? Laporannya belum sepenuhnya selesai...
+BOS: Klien sudah menunggu di ruang rapat. Ini tidak bisa ditunda.
+STAFF: Baik, Pak, saya akan kirim versi yang ada sekarang sambil terus melengkapi.
+BOS: Pastikan angka-angka di halaman tiga sudah benar. Itu yang paling krusial.
+STAFF: Siap, Pak, saya cek ulang sekali lagi sebelum kirim.`},
+{id:'d18',type:'dialog',title:'Ulang Tahun Terlupa',emotion:'kecewa',difficulty:'pemula',theme:'persahabatan',characters:['SINTA','BUDI'],text:`SINTA: Kamu inget ini tanggal berapa, Bud?
+BUDI: Tanggal dua puluh, kenapa? Ada yang penting?
+SINTA: (menghela napas) Nggak apa-apa. Nggak penting kok.
+BUDI: Sinta, ini kan... astaga, ini ulang tahun kamu ya?!
+SINTA: Udah, nggak usah dipaksain inget sekarang. Percuma.
+BUDI: Maaf banget, aku beneran lupa. Kita rayain sekarang juga, ya? Aku traktir apa aja.`},
+{id:'d19',type:'dialog',title:'Telepon Tengah Malam',emotion:'cemas',difficulty:'menengah',theme:'horor',characters:['NOVA','OPERATOR'],text:`NOVA: Halo, tolong, saya butuh bantuan, ada suara aneh di rumah saya.
+OPERATOR: Baik, Ibu tenang dulu. Ibu sedang berada di ruangan mana sekarang?
+NOVA: Saya di kamar, tapi pintunya... pintunya barusan terbuka sendiri.
+OPERATOR: Petugas sedang menuju lokasi Ibu. Tetap di telepon dengan saya, ya.
+NOVA: Saya denger langkah kaki makin deket ke pintu kamar saya!
+OPERATOR: Tarik napas, Ibu. Kunci pintu kalau bisa, petugas hampir sampai.`},
+{id:'d20',type:'dialog',title:'Nilai Ujian',emotion:'bangga',difficulty:'pemula',theme:'sekolah',characters:['GURU','MURID'],text:`GURU: Kamu dapat nilai tertinggi se-angkatan untuk ujian akhir ini.
+MURID: Beneran, Bu? Saya sampai nggak nyangka bisa dapet nilai segitu.
+GURU: Ibu lihat sendiri usaha kamu belajar tiap istirahat di perpustakaan.
+MURID: Terima kasih sudah percaya sama saya, Bu, waktu semua orang meragukan.
+GURU: Ibu selalu tau kamu punya potensi lebih dari yang kamu kira.
+MURID: Ini bakal jadi motivasi saya buat terus belajar lebih giat lagi.`},
+{id:'d21',type:'dialog',title:'Pembagian Warisan',emotion:'benci',difficulty:'mahir',theme:'keluarga',characters:['KAKAK','ADIK'],text:`KAKAK: Kenapa nama kamu yang tercantum di sertifikat tanah itu, bukan nama kita berdua?
+ADIK: Karena Bapak yang nulis sendiri sebelum meninggal, Kak. Aku nggak minta itu.
+KAKAK: Kamu pasti udah bujuk Bapak diam-diam waktu aku lagi kerja di luar kota.
+ADIK: Aku ada di samping Bapak setiap hari waktu sakit, Kak. Kamu di mana waktu itu?
+KAKAK: Jangan balik-balikin ke situ. Ini soal keadilan, bukan siapa yang paling sering nengok.
+ADIK: Kalau begitu, ajak pengacara aja buat bahas ini. Aku capek berantem soal harta.`},
+{id:'d22',type:'dialog',title:'Bayangan di Lift',emotion:'terkejut',difficulty:'mahir',theme:'supernatural',characters:['VIRA','SATPAM'],text:`VIRA: Pak, tadi saya lihat ada orang di lift, tapi lift ini kosong dari tadi.
+SATPAM: Lift nomor tiga itu memang sering dilaporkan begitu, Mbak.
+VIRA: Bayangannya... bayangannya persis kayak wajah saya sendiri, Pak.
+SATPAM: (raut wajah berubah) Mbak baru pindah ke lantai tujuh belas, kan?
+VIRA: Iya, kenapa memangnya, Pak?
+SATPAM: Sebaiknya Mbak jangan naik lift ini sendirian lagi mulai sekarang.`},
+{id:'d23',type:'dialog',title:'Sore di Kedai Kopi',emotion:'tenang',difficulty:'menengah',theme:'drama-sosial',characters:['BARISTA','PELANGGAN'],text:`PELANGGAN: Kopi yang biasa, tapi kali ini lebih pahit sedikit, boleh?
+BARISTA: Bisa, sedang ada hari berat ya, Kak?
+PELANGGAN: Bukan berat sih, cuma... butuh sesuatu buat bikin pikiran jernih lagi.
+BARISTA: Kadang kopi pahit emang lebih jujur daripada yang manis-manis.
+PELANGGAN: Betul juga. Terima kasih ya, udah mau dengerin curhatan receh gini.
+BARISTA: Justru itu enaknya kerja di sini, banyak cerita numpang lewat tiap sore.`},
+{id:'d24',type:'dialog',title:'PHK Massal',emotion:'putus asa',difficulty:'menengah',theme:'kerja',characters:['HRD','KARYAWAN'],text:`HRD: Kami minta maaf, posisi Anda termasuk dalam efisiensi kali ini.
+KARYAWAN: Saya sudah delapan tahun di sini, Bu. Tanpa peringatan sama sekali?
+HRD: Keputusan ini dari manajemen pusat, bukan dari divisi kami langsung.
+KARYAWAN: Saya punya keluarga yang bergantung sama gaji ini setiap bulan.
+HRD: Kami akan berikan pesangon sesuai aturan, dan surat rekomendasi terbaik.
+KARYAWAN: Surat rekomendasi nggak bisa bayar sekolah anak saya bulan depan, Bu.`},
+{id:'d25',type:'dialog',title:'Teman Baru di Kelas',emotion:'cemburu',difficulty:'pemula',theme:'sekolah',characters:['LIRA','DINDA'],text:`LIRA: Kamu duduk sama anak baru itu terus dari kemarin.
+DINDA: Dia baru pindah, Lir, kasian kalau nggak ada yang temenin.
+LIRA: Terus aku gimana? Kita kan biasanya duduk bareng dari kelas satu.
+DINDA: Bukan berarti aku lupa kamu. Kamu juga bisa gabung, kok.
+LIRA: (ragu) ...beneran boleh aku ikut duduk bareng kalian?
+DINDA: Ya iyalah! Malah seneng kalau kita bertiga temenan.`},
+{id:'d26',type:'dialog',title:'Pulang ke Rumah Lama',emotion:'rindu',difficulty:'menengah',theme:'keluarga',characters:['ANAK','IBU'],text:`ANAK: Bu, kamar aku masih sama persis kayak dulu ya.
+IBU: Ibu sengaja nggak ubah apa-apa, biar tetep berasa kamu masih tinggal di sini.
+ANAK: Aku baru sadar, ternyata aku kangen banget sama rumah ini.
+IBU: Kota besar emang seru, tapi rumah tetap rumah, Nak.
+ANAK: Lain kali aku usahain pulang lebih sering, Bu. Janji.
+IBU: Ibu cuma minta itu. Nggak perlu bawa oleh-oleh, cukup kamu aja yang pulang.`},
+{id:'d27',type:'dialog',title:'Prank Kebablasan',emotion:'marah',difficulty:'pemula',theme:'komedi',characters:['TONI','RUDI'],text:`TONI: WOI RUDI! Kamu taro lem di kursi aku, celana aku sobek nih!
+RUDI: (ketawa) Sori, sori, aku kira kamu bakal langsung berdiri lagi!
+TONI: Ini celana kesayangan aku, tau! Baru dibeli minggu lalu!
+RUDI: Ya udah, aku ganti rugi deh, jangan ngambek gitu.
+TONI: Awas aja kalau besok kamu duduk, aku bales dua kali lipat.
+RUDI: Waduh, kayaknya aku harus mulai periksa kursi mulai sekarang.`},
+{id:'d28',type:'dialog',title:'Surat Cerai',emotion:'sedih',difficulty:'mahir',theme:'drama-sosial',characters:['SUAMI','ISTRI'],text:`ISTRI: Ini surat dari pengadilan. Tanda tangan kamu tinggal di halaman terakhir.
+SUAMI: (menatap lama) ...dua belas tahun berakhir cuma dengan selembar kertas ini.
+ISTRI: Aku juga nggak nyangka bakal sampai di titik ini, Mas.
+SUAMI: Aku masih inget hari pertama kita ketemu, kamu ketawa gara-gara aku salah ucap nama.
+ISTRI: Aku juga inget. Tapi ingatan itu nggak cukup buat nahan semua yang udah terjadi.
+SUAMI: (menandatangani pelan) Semoga kamu bahagia, di mana pun nanti kamu berada.`},
+{id:'d29',type:'dialog',title:'Kontak dari Luar Angkasa',emotion:'senang',difficulty:'menengah',theme:'sci-fi',characters:['ILMUWAN 1','ILMUWAN 2'],text:`ILMUWAN 1: Sinyal ini... ini bukan noise biasa. Ini pola yang berulang!
+ILMUWAN 2: Kamu yakin? Kita udah nunggu sinyal kayak gini selama dua puluh tahun.
+ILMUWAN 1: Lihat grafiknya sendiri! Ini jelas terstruktur, ini komunikasi!
+ILMUWAN 2: Astaga... kita beneran nggak sendirian di alam semesta ini.
+ILMUWAN 1: Ayo, kita harus laporkan ini ke seluruh dunia sekarang juga!
+ILMUWAN 2: Tunggu— coba dengerin lagi. Sepertinya sinyal ini baru saja membalas kita.`},
+{id:'d30',type:'dialog',title:'Jejak Kaki Basah',emotion:'gugup',difficulty:'mahir',theme:'misteri',characters:['DETEKTIF','SAKSI'],text:`DETEKTIF: Anda bilang tidak melihat siapa pun malam itu. Tapi jejak kaki basah ini menuju kamar Anda.
+SAKSI: S-saya... saya memang pulang lewat belakang, hujan deras waktu itu.
+DETEKTIF: Jejak ini ukurannya sama persis dengan sepatu yang Anda pakai sekarang.
+SAKSI: Saya nggak ada hubungannya dengan kejadian itu, saya cuma kebetulan lewat!
+DETEKTIF: Kebetulan yang sangat rapi, mengingat semua bukti mengarah ke Anda.
+SAKSI: (suara bergetar) Baiklah... baiklah, saya akan ceritakan semuanya dari awal.`}
+];
+
+const ALL_EMOTIONS = ['marah','sedih','senang','takut','gugup','kecewa','cemas','bangga','benci','terkejut','tenang','putus asa','cemburu','rindu'];
+const ALL_THEMES = ['keluarga','percintaan','persahabatan','sekolah','kerja','misteri','fantasi','horor','komedi','drama-sosial','sci-fi','supernatural'];
+
+function allScripts(){ return OFFICIAL.concat(communityScripts); }
+
+/* ============ UTIL ============ */
+function esc(s){ return (s+'').replace(/[&<>]/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c])); }
+function renderScriptText(sc){
+  if(sc.type==='dialog' && sc.characters && sc.characters.length){
+    return esc(sc.text).split('\n').map(line=>{
+      const idx = line.indexOf(':');
+      if(idx>0){ return '<b>'+esc(line.slice(0,idx))+':</b>'+esc(line.slice(idx+1)); }
+      return esc(line);
+    }).join('\n');
+  }
+  return esc(sc.text);
+}
+function badgesHtml(sc){
+  return `<div class="badges">
+    <span class="badge b-type">${sc.type==='monolog'?'Monolog':'Dialog'}</span>
+    <span class="badge b-emo">${esc(sc.emotion)}</span>
+    <span class="badge b-diff">${esc(sc.difficulty)}</span>
+    <span class="badge b-theme">${esc(sc.theme)}</span>
+  </div>`;
+}
+function toast(msg){
+  const t = document.getElementById('toast'); t.textContent = msg; t.classList.add('show');
+  clearTimeout(toast._h); toast._h = setTimeout(()=>t.classList.remove('show'), 2400);
+}
+
+/* ============ TABS ============ */
+document.getElementById('tabs').addEventListener('click', e=>{
+  const btn = e.target.closest('button[data-tab]'); if(!btn) return;
+  sfxClick();
+  document.querySelectorAll('#tabs button').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  ['gacha','browse','koleksi','submit'].forEach(name=>{
+    document.getElementById('tab-'+name).style.display = (name===btn.dataset.tab)?'':'none';
+  });
+  if(btn.dataset.tab==='browse') renderBrowse();
+  if(btn.dataset.tab==='koleksi') renderKoleksi();
+  if(btn.dataset.tab==='submit') renderCommunityList();
+});
+
+/* ============ GACHA ============ */
+let currentType = 'monolog';
+document.querySelectorAll('.type-toggle button').forEach(b=>{
+  b.addEventListener('click', ()=>{
+    sfxToggle();
+    document.querySelectorAll('.type-toggle button').forEach(x=>x.classList.remove('active'));
+    b.classList.add('active');
+    currentType = b.dataset.type;
+  });
+});
+
+function buildCapsules(){
+  const g = document.getElementById('capsules'); g.innerHTML='';
+  const colors = ['#e2a344','#4a7c59','#c1443c','#f2e6c9','#a9752f','#dfe9ea'];
+  let i=0;
+  for(let row=0; row<4; row++){
+    for(let c=0;c<5;c++){
+      if(Math.random()<0.15) continue;
+      const cx = 60 + c*20 + (row%2?8:0);
+      const cy = 55 + row*20;
+      if(Math.hypot(cx-110,cy-95) > 68) continue;
+      const el = document.createElementNS('http://www.w3.org/2000/svg','circle');
+      el.setAttribute('cx',cx); el.setAttribute('cy',cy); el.setAttribute('r',8);
+      el.setAttribute('fill', colors[i%colors.length]); el.setAttribute('opacity','.85');
+      g.appendChild(el); i++;
+    }
+  }
+}
+buildCapsules();
+
+const spinBtn = document.getElementById('spinBtn');
+const vu = document.getElementById('vu');
+const onairBox = document.getElementById('onairBox');
+const onairText = document.getElementById('onairText');
+
+spinBtn.addEventListener('click', async ()=>{
+  spinBtn.disabled = true;
+  sfxSpinStart();
+  vu.classList.add('active');
+  onairBox.classList.add('live'); onairText.textContent = 'MEMUTAR...';
+  document.getElementById('resultArea').innerHTML = `<div class="result-empty"><span class="cap-icon">🌀</span>Kapsul lagi jatuh... naskahmu segera keluar.</div>`;
+
+  await new Promise(r=>setTimeout(r, 1200));
+
+  const pool = allScripts().filter(s=>s.type===currentType);
+  const picked = pool[Math.floor(Math.random()*pool.length)];
+
+  vu.classList.remove('active');
+  onairBox.classList.remove('live'); onairText.textContent = 'STANDBY';
+  sfxReveal();
+  showResult(picked);
+
+  myProgress.totalSpins++;
+  if(currentType==='monolog') myProgress.monologSpins++; else myProgress.dialogSpins++;
+  if(!myProgress.collection[picked.id]) myProgress.collection[picked.id] = {count:0, firstAt:Date.now()};
+  myProgress.collection[picked.id].count++;
+  myProgress.collection[picked.id].lastAt = Date.now();
+  myProgress.log.unshift({id:picked.id, title:picked.title, at:Date.now()});
+  if(myProgress.log.length>50) myProgress.log.length = 50;
+  updateStatsUI();
+  await saveProgress();
+
+  spinBtn.disabled = false;
+});
+
+function showResult(sc){
+  const charLine = (sc.type==='dialog' && sc.characters && sc.characters.length) ? `<div class="char-list">Peran: ${sc.characters.map(esc).join(' & ')}</div>` : '';
+  document.getElementById('resultArea').innerHTML = `
+    <div class="script-card">
+      <div class="pin"></div>
+      ${badgesHtml(sc)}
+      <h3>${esc(sc.title)}</h3>
+      ${charLine}
+      <div class="script-text">${renderScriptText(sc)}</div>
+      <div class="card-actions">
+        <button class="mini-btn" id="spinAgainBtn">🔁 Putar Lagi</button>
+        <button class="mini-btn alt" id="markDoneBtn">✅ Sudah Latihan</button>
+      </div>
+    </div>`;
+  document.getElementById('spinAgainBtn').onclick = ()=>{ sfxClick(); spinBtn.click(); };
+  document.getElementById('markDoneBtn').onclick = async ()=>{
+    sfxClick();
+    if(myProgress.collection[sc.id]) myProgress.collection[sc.id].practiced = true;
+    await saveProgress();
+    toast('Ditandai sudah latihan 🎧');
+  };
+}
+
+function updateStatsUI(){
+  document.getElementById('statSpins').textContent = myProgress.totalSpins;
+  document.getElementById('statMono').textContent = myProgress.monologSpins;
+  document.getElementById('statDialog').textContent = myProgress.dialogSpins;
+}
+
+/* ============ BROWSE ============ */
+function fillFilterOptions(){
+  const emoSel = document.getElementById('fEmo'), themeSel = document.getElementById('fTheme');
+  const emoList = document.getElementById('emoList'), themeList = document.getElementById('themeList');
+  ALL_EMOTIONS.forEach(e=>{ emoSel.innerHTML += `<option value="${e}">${e}</option>`; emoList.innerHTML += `<option value="${e}">`; });
+  ALL_THEMES.forEach(t=>{ themeSel.innerHTML += `<option value="${t}">${t}</option>`; themeList.innerHTML += `<option value="${t}">`; });
+}
+fillFilterOptions();
+
+['searchBox','fType','fEmo','fDiff','fTheme'].forEach(id=>{
+  document.getElementById(id).addEventListener('input', renderBrowse);
+});
+
+function renderBrowse(){
+  const q = document.getElementById('searchBox').value.trim().toLowerCase();
+  const ft = document.getElementById('fType').value;
+  const fe = document.getElementById('fEmo').value;
+  const fd = document.getElementById('fDiff').value;
+  const fth = document.getElementById('fTheme').value;
+  let list = allScripts().filter(s=>{
+    if(ft && s.type!==ft) return false;
+    if(fe && s.emotion!==fe) return false;
+    if(fd && s.difficulty!==fd) return false;
+    if(fth && s.theme!==fth) return false;
+    if(q && !(s.title.toLowerCase().includes(q) || s.text.toLowerCase().includes(q))) return false;
+    return true;
+  });
+  document.getElementById('countNote').textContent = `Menampilkan ${list.length} dari ${allScripts().length} naskah`;
+  const grid = document.getElementById('cardGrid');
+  if(!list.length){ grid.innerHTML = `<div class="empty-note">Nggak ada naskah yang cocok. Coba ubah filter, atau tambahkan sendiri di tab "Tambah Script".</div>`; return; }
+  grid.innerHTML = list.map(sc=>`
+    <div class="index-card" data-id="${sc.id}">
+      <div class="clip"></div>
+      <h4>${esc(sc.title)}</h4>
+      <p>${esc(sc.text.split('\n')[0])}</p>
+      ${badgesHtml(sc)}
+    </div>`).join('');
+  grid.querySelectorAll('.index-card').forEach(card=>{
+    card.addEventListener('click', ()=>{
+      sfxClick();
+      const sc = allScripts().find(s=>s.id===card.dataset.id);
+      openModal(sc);
+    });
+  });
+}
+
+function openModal(sc){
+  const charLine = (sc.type==='dialog' && sc.characters && sc.characters.length) ? `<div class="char-list">Peran: ${sc.characters.map(esc).join(' & ')}</div>` : '';
+  document.getElementById('modalCard').innerHTML = `
+    <button class="close-x" id="closeModal">✕</button>
+    <div class="pin"></div>
+    ${badgesHtml(sc)}
+    <h3>${esc(sc.title)}</h3>
+    ${charLine}
+    <div class="script-text">${renderScriptText(sc)}</div>`;
+  document.getElementById('modalBg').classList.add('open');
+  document.getElementById('closeModal').onclick = ()=>{ sfxClick(); document.getElementById('modalBg').classList.remove('open'); };
+}
+document.getElementById('modalBg').addEventListener('click', e=>{
+  if(e.target.id==='modalBg') document.getElementById('modalBg').classList.remove('open');
+});
+
+/* ============ KOLEKSI ============ */
+function renderKoleksi(){
+  const total = allScripts().length;
+  const owned = Object.keys(myProgress.collection).length;
+  document.getElementById('statsRow').innerHTML = `
+    <div class="stat-box"><div class="num">${owned}/${total}</div><div class="lbl">Naskah Terkumpul</div></div>
+    <div class="stat-box"><div class="num">${myProgress.totalSpins}</div><div class="lbl">Total Putaran</div></div>
+    <div class="stat-box"><div class="num">${myProgress.monologSpins}</div><div class="lbl">Spin Monolog</div></div>
+    <div class="stat-box"><div class="num">${myProgress.dialogSpins}</div><div class="lbl">Spin Dialog</div></div>`;
+
+  const grid = document.getElementById('collectionGrid');
+  const ids = Object.keys(myProgress.collection);
+  if(!ids.length){ grid.innerHTML = `<div class="empty-note">Koleksi masih kosong. Yuk putar mesin gacha di tab pertama!</div>`; }
+  else {
+    grid.innerHTML = ids.map(id=>{
+      const sc = allScripts().find(s=>s.id===id);
+      if(!sc) return '';
+      const info = myProgress.collection[id];
+      return `<div class="index-card" data-id="${sc.id}">
+        <div class="clip"></div>
+        <h4>${esc(sc.title)}</h4>
+        <p>Didapat ${info.count}x ${info.practiced?'· sudah dilatih ✅':''}</p>
+        ${badgesHtml(sc)}
+      </div>`;
+    }).join('');
+    grid.querySelectorAll('.index-card').forEach(card=>{
+      card.addEventListener('click', ()=>{
+        sfxClick();
+        const sc = allScripts().find(s=>s.id===card.dataset.id);
+        openModal(sc);
+      });
+    });
+  }
+
+  const hist = document.getElementById('historyList');
+  if(!myProgress.log.length){ hist.innerHTML = `<li class="empty-note" style="border:none;">Belum ada riwayat putaran.</li>`; }
+  else {
+    hist.innerHTML = myProgress.log.map(h=>{
+      const d = new Date(h.at);
+      const timeStr = d.toLocaleDateString('id-ID',{day:'2-digit',month:'short'}) + ' ' + d.toLocaleTimeString('id-ID',{hour:'2-digit',minute:'2-digit'});
+      return `<li><span class="h-title">${esc(h.title)}</span><span class="h-time">${timeStr}</span></li>`;
+    }).join('');
+  }
+}
+
+/* ============ SUBMIT ============ */
+function addCharRow(value=''){
+  const row = document.createElement('div'); row.className='char-row';
+  row.innerHTML = `<input type="text" placeholder="Nama karakter" value="${esc(value)}"><button type="button">✕</button>`;
+  row.querySelector('button').onclick = ()=>{ row.remove(); };
+  document.getElementById('charRows').appendChild(row);
+}
+addCharRow(); addCharRow();
+document.getElementById('addCharBtn').addEventListener('click', ()=>{ sfxClick(); addCharRow(); });
+
+document.getElementById('inType').addEventListener('change', e=>{
+  document.getElementById('charsField').style.display = e.target.value==='dialog' ? '' : 'none';
+});
+
+document.getElementById('submitForm').addEventListener('submit', async e=>{
+  e.preventDefault();
+  const type = document.getElementById('inType').value;
+  const title = document.getElementById('inTitle').value.trim();
+  const emotion = document.getElementById('inEmo').value.trim().toLowerCase();
+  const theme = document.getElementById('inTheme').value.trim().toLowerCase();
+  const difficulty = document.getElementById('inDiff').value;
+  const text = document.getElementById('inText').value.trim();
+  if(!title || !emotion || !theme || !text){ toast('Lengkapi semua kolom dulu ya'); return; }
+  const characters = type==='dialog' ? Array.from(document.querySelectorAll('#charRows input')).map(i=>i.value.trim()).filter(Boolean) : [];
+  const sc = { id:'c'+Date.now(), type, title, emotion, theme, difficulty, characters, text, contributor:'Anggota Komunitas' };
+  communityScripts.push(sc);
+  await saveCommunity();
+  sfxSubmit();
+  toast('Naskah berhasil dikirim ke Basement! 🎉');
+  e.target.reset();
+  document.getElementById('charRows').innerHTML=''; addCharRow(); addCharRow();
+  document.getElementById('charsField').style.display='none';
+  renderCommunityList();
+});
+
+function renderCommunityList(){
+  const grid = document.getElementById('communityGrid');
+  if(!communityScripts.length){ grid.innerHTML = `<div class="empty-note">Belum ada kontribusi dari komunitas. Jadilah yang pertama!</div>`; return; }
+  const recent = communityScripts.slice(-6).reverse();
+  grid.innerHTML = recent.map(sc=>`
+    <div class="index-card" data-id="${sc.id}">
+      <div class="clip"></div>
+      <h4>${esc(sc.title)}</h4>
+      <p>${esc(sc.text.split('\n')[0])}</p>
+      ${badgesHtml(sc)}
+    </div>`).join('');
+  grid.querySelectorAll('.index-card').forEach(card=>{
+    card.addEventListener('click', ()=>{
+      sfxClick();
+      const sc = allScripts().find(s=>s.id===card.dataset.id);
+      openModal(sc);
+    });
+  });
+}
+
+/* ============ INIT ============ */
+(async function init(){
+  await loadStorage();
+  updateStatsUI();
+})();
+</script>
+</body>
+</html>
