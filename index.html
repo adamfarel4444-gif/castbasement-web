@@ -125,6 +125,24 @@ svg#machine{width:100%;max-width:260px;height:auto;filter:drop-shadow(0 12px 18p
 }
 @keyframes pop{from{opacity:0;transform:scale(.9) translateY(10px)}to{opacity:1;transform:scale(1) translateY(0)}}
 .pin{position:absolute;top:10px;right:16px;width:14px;height:14px;border-radius:50%;background:var(--onair);box-shadow:0 2px 3px rgba(0,0,0,.4), inset 0 2px 2px rgba(255,255,255,.3);}
+.logo-mark{width:54px;height:54px;filter:drop-shadow(0 4px 10px rgba(193,68,60,.45));flex-shrink:0;}
+.hero-strip{display:flex;align-items:center;gap:16px;padding:4px 0 16px;flex-wrap:wrap;}
+.social-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;}
+.social-pill{
+  display:inline-flex;align-items:center;gap:7px;background:var(--bg-panel-2);border:1px solid var(--line);
+  color:var(--paper);text-decoration:none;padding:8px 14px;border-radius:20px;font-size:12px;font-weight:600;
+  transition:.15s;
+}
+.social-pill svg{width:15px;height:15px;flex-shrink:0;}
+.social-pill:hover{transform:translateY(-2px);border-color:var(--amber);}
+.social-pill.discord:hover{background:#5865F2;border-color:#5865F2;}
+.social-pill.youtube:hover{background:#FF0000;border-color:#FF0000;}
+.social-pill.instagram:hover{background:linear-gradient(45deg,#f58529,#dd2a7b,#8134af,#515bd4);border-color:transparent;}
+.social-pill.tiktok:hover{background:#000;border-color:#25F4EE;color:#25F4EE;}
+.community-panel{padding:18px 22px;margin:18px 0 26px;}
+.community-panel .eyebrow{color:var(--amber);font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;margin-bottom:4px;}
+.community-panel h3{font-size:18px;color:var(--paper);margin-bottom:10px;}
+.footer-social{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:10px;}
 .badges{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px;}
 .badge{font-size:10px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:4px 9px;border-radius:12px;color:#fff;}
 .b-type{background:var(--ink);}
@@ -208,12 +226,39 @@ footer.site{border-top:1px solid var(--line);padding:22px 0;color:var(--muted);f
   <div class="bulb-glow"></div>
   <div class="wrap">
     <div class="brand-row">
-      <div class="brand">
-        <h1>CAST BASEMENT</h1>
-        <span class="tagline">// studio latihan voice acting — di bawah tanah, suara dilepas bebas</span>
+      <div class="hero-strip">
+        <img class="logo-mark" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAUAAAAFACAYAAADNkKWqAABXj0lEQVR42u29e5xkV3Xf+/vtfaof1Y+ZkTQjg4DoxUMPhMTM9IyETGtiQwAHbAe3YuyPceILTkL8iBPfmziE9AyJbwh2EhPF4fpDiAF/wLIaOzYvSYCYaQPSTPcMEkKMhB7oLcGMRprpR1VX1dl73T/OOVWnTp2qfndPT6/v51PTPdX1PGfv31lr7bXXAhRFURRFURRFURRFURRFURRFURRFURRFURRFURRFURRFURRFURRFURRFURRFURRFURRFURRFURRFURRFURRFURRFURRFURRFURRFURRFURRFURRFURRFURRFURRFURRFURRFURRFURRFURRFURRFURRFURRFURRFURRFURRFURRFURRFURRFURRFURRFURRFURRFURRFURRFURRFURRFURRFURRFURRFURRFURRFURRFURRFURRFURRFURRFURRFURRFURRFURRFURRFURRFURRFURRFURRFURRFURRFURRFURRFURRFURRFURRFURRFaUEA6lFQVgkdW8pZK3xGMBzokVBWk4MYDgQweiSUs0j4Rk3j/zsLT2Fvrx4ZZSW5G3t7j2JnoTHORs2oCqGyvuI3YpPfZ7D72gqv/+iM2X1PCbteqe6wskIXWALARM+uV36nb889x/uv/+iR4u5r88agoqzZoEwG3mnsvGyOQ38+Y4ZqYn5SpszQ70WPUXdYWTm3FwCO9g/93vODb5bvDOyp3T+w98+PDt5wWSKCerFdGmpCL8HlBQBizM2Yoff2mGCym/YXBQimUZm1vvbpaDCOez1aykpwCONeANLVPv2Mr8wKEHTT/GKP95P3Dex9LzHmAEBdYhXAVXd5CfhDGLYzHPrjPthPO2DbGbhqAQYCnDyBwRcJSKSVirJ89gNCQKbKgy8CPBnAYEpc1RHb+mE//f2BG/54P4btAcDfpi6xCuDqid+Yewa7zx8y5a/0MfjAGYSuChEAQex/uIsx4/RoKavBAGYcxTuKgIKgJiJTUnNbaD/wnoHaV44M7D7/Zow5FUEVwFURvx9h16XnGXOwiOAtp1ELCVoTxV5Yg0AgF56AOV+PmLIauKI534tcGIpAREiABO2LUg17ad/Sj+DgN7fsulRFUAVwxcXvBHa/ZsDYQ90wrz+NWmjA+iIHAdbg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" alt="Logo Cast Basement">
+        <div class="brand">
+          <h1>CAST BASEMENT</h1>
+          <span class="tagline">// studio latihan voice acting — di bawah tanah, suara dilepas bebas</span>
+        </div>
       </div>
       <div class="onair" id="onairBox"><span class="dot"></span><span id="onairText">STANDBY</span></div>
     </div>
+
+    <div class="panel community-panel">
+      <div class="eyebrow">Gabung Komunitas</div>
+      <h3>Ikuti &amp; ngobrol bareng sesama VA di Cast Basement</h3>
+      <div class="social-row">
+        <a class="social-pill discord" href="https://discord.gg/bfca8xKuK" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.3 4.4A19.8 19.8 0 0 0 15.6 3c-.2.4-.5.9-.7 1.3a18 18 0 0 0-5.8 0A9 9 0 0 0 8.4 3 19.7 19.7 0 0 0 3.7 4.4C1 8.6.3 12.6.6 16.6a20 20 0 0 0 6 3c.5-.6.9-1.3 1.2-2a13 13 0 0 1-1.9-.9l.5-.4a14 14 0 0 0 11.2 0l.5.4c-.6.4-1.3.7-1.9.9.3.7.7 1.4 1.2 2a20 20 0 0 0 6-3c.4-4.6-.7-8.6-3-12.2ZM9.7 14.3c-1 0-1.8-.9-1.8-2s.8-2 1.8-2 1.8.9 1.8 2-.8 2-1.8 2Zm6.6 0c-1 0-1.8-.9-1.8-2s.8-2 1.8-2 1.8.9 1.8 2-.8 2-1.8 2Z"/></svg>
+          Discord
+        </a>
+        <a class="social-pill youtube" href="https://youtube.com/@cstbmnt" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 7.3a3 3 0 0 0-2.1-2.1C19 4.7 12 4.7 12 4.7s-7 0-8.9.5A3 3 0 0 0 1 7.3 31 31 0 0 0 .5 12 31 31 0 0 0 1 16.7 3 3 0 0 0 3.1 18.8c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 23.5 12 31 31 0 0 0 23 7.3ZM9.8 15.3V8.7l5.8 3.3-5.8 3.3Z"/></svg>
+          YouTube
+        </a>
+        <a class="social-pill instagram" href="https://instagram.com/castbasement.ent" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 2 .3 2.4.5.6.2 1 .5 1.5 1 .4.4.7.9 1 1.5.2.5.4 1.3.5 2.4.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.3 2-.5 2.4-.2.6-.5 1-1 1.5-.4.4-.9.7-1.5 1-.5.2-1.3.4-2.4.5-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-2-.3-2.4-.5a4 4 0 0 1-1.5-1 4 4 0 0 1-1-1.5c-.2-.5-.4-1.3-.5-2.4-.1-1.3-.1-1.7-.1-4.9s0-3.6.1-4.9c.1-1.2.3-2 .5-2.4.2-.6.5-1 1-1.5.4-.4.9-.7 1.5-1 .5-.2 1.3-.4 2.4-.5 1.3-.1 1.7-.1 4.9-.1ZM12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10Zm0 8.2a3.2 3.2 0 1 1 0-6.4 3.2 3.2 0 0 1 0 6.4Zm5.2-8.4a1.2 1.2 0 1 1-2.3 0 1.2 1.2 0 0 1 2.3 0Z"/></svg>
+          Instagram
+        </a>
+        <a class="social-pill tiktok" href="https://www.tiktok.com/@cast.basement" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.6 2h-3.3v13.6a2.9 2.9 0 1 1-2.1-2.8V9.4a6.2 6.2 0 1 0 5.4 6.2V8.2a7.9 7.9 0 0 0 4.4 1.3V6.2a4.6 4.6 0 0 1-4.4-4.2Z"/></svg>
+          TikTok
+        </a>
+      </div>
+    </div>
+
     <nav class="tabs" id="tabs">
       <button data-tab="gacha" class="active">🎲 Gacha Script</button>
       <button data-tab="browse">📼 Semua Script</button>
@@ -358,7 +403,15 @@ footer.site{border-top:1px solid var(--line);padding:22px 0;color:var(--muted);f
 
 </main>
 
-<footer class="site">Cast Basement — dibuat oleh &amp; untuk komunitas voice actor. Latihan terus, suara makin matang. 🎧</footer>
+<footer class="site">
+  Cast Basement — dibuat oleh &amp; untuk komunitas voice actor. Latihan terus, suara makin matang. 🎧
+  <div class="footer-social">
+    <a href="https://discord.gg/bfca8xKuK" target="_blank" rel="noopener">Discord</a> ·
+    <a href="https://youtube.com/@cstbmnt" target="_blank" rel="noopener">YouTube</a> ·
+    <a href="https://instagram.com/castbasement.ent" target="_blank" rel="noopener">Instagram</a> ·
+    <a href="https://www.tiktok.com/@cast.basement" target="_blank" rel="noopener">TikTok</a>
+  </div>
+</footer>
 
 <div class="modal-bg" id="modalBg">
   <div class="script-card modal-card" id="modalCard"></div>
@@ -722,7 +775,459 @@ SAKSI: S-saya... saya memang pulang lewat belakang, hujan deras waktu itu.
 DETEKTIF: Jejak ini ukurannya sama persis dengan sepatu yang Anda pakai sekarang.
 SAKSI: Saya nggak ada hubungannya dengan kejadian itu, saya cuma kebetulan lewat!
 DETEKTIF: Kebetulan yang sangat rapi, mengingat semua bukti mengarah ke Anda.
-SAKSI: (suara bergetar) Baiklah... baiklah, saya akan ceritakan semuanya dari awal.`}
+SAKSI: (suara bergetar) Baiklah... baiklah, saya akan ceritakan semuanya dari awal.`},
+
+{id:'m31',type:'monolog',title:'Nilai Dicontek',emotion:'marah',difficulty:'pemula',theme:'sekolah',text:`Aku begadang tiga hari buat ngerjain tugas ini sendirian.
+Terus kamu tinggal foto punya aku, kirim ke grup, dan dapet pujian yang sama kayak aku?
+Aku bukan nggak mau bantu. Aku cuma benci kerja keras aku dianggap gratisan.
+Mulai sekarang, jangan pernah minta contekan apa pun dari aku lagi.`},
+{id:'m32',type:'monolog',title:'Kursi Kosong di Meja Makan',emotion:'sedih',difficulty:'menengah',theme:'keluarga',text:`Ibu masih nyiapin empat piring tiap makan malam, padahal kita cuma bertiga sekarang.
+Kadang aku lihat Ibu diem-diem taruh satu piring lagi di kursi itu, terus narik lagi pelan-pelan.
+Nggak ada yang berani ngomongin itu di meja makan. Takut bikin semuanya runtuh.
+Tapi aku rasa kita semua cuma lagi belajar cara makan malam tanpa dia.`},
+{id:'m33',type:'monolog',title:'Kontrak Pertama',emotion:'senang',difficulty:'pemula',theme:'kerja',text:`Tanda tangan ini resmi bikin aku jadi karyawan tetap, bukan lagi magang!
+Ibu pasti seneng banget denger kabar ini, aku udah nggak sabar telepon dia.
+Sembilan bulan ngelamar ke mana-mana, akhirnya ada yang percaya sama aku.
+Oke, mulai Senin, panggil aku karyawan profesional, bukan anak magang lagi!`},
+{id:'m34',type:'monolog',title:'Boneka di Lemari',emotion:'takut',difficulty:'mahir',theme:'supernatural',text:`Boneka ini punya Oma, katanya jangan pernah dibuang, apa pun yang terjadi.
+Tapi kenapa posisinya selalu beda tiap aku bangun pagi, padahal lemari ini selalu aku kunci?
+Semalam aku sumpah dengar dia manggil namaku, pelan, dari dalam lemari.
+Aku nggak peduli lagi soal janji ke Oma. Boneka ini harus keluar dari rumah ini malam ini juga.`},
+{id:'m35',type:'monolog',title:'Nembak Duluan',emotion:'gugup',difficulty:'pemula',theme:'percintaan',text:`Oke, bunganya udah di tangan, HP udah disimpen biar nggak keliatan gemeteran.
+Dia bentar lagi dateng. Aku cuma punya satu kesempatan buat ngomong ini dengan benar.
+Kenapa tiba-tiba semua kata yang udah aku hafal malah ilang begitu aja dari kepala?
+Hai— um, maksudku, selamat sore, aku— oke, aku mulai dari awal lagi aja.`},
+{id:'m36',type:'monolog',title:'Promosi yang Melayang',emotion:'kecewa',difficulty:'mahir',theme:'kerja',text:`Tiga tahun aku kerja lembur demi posisi itu, dan sekarang dikasih ke orang yang baru enam bulan gabung.
+Bos bilang aku "belum siap". Belum siap gimana lagi setelah semua proyek yang aku pegang sendirian?
+Aku pengen marah-marah di ruangan itu, tapi aku tau itu nggak akan ngubah apa-apa.
+Mungkin ini saatnya aku berhenti nunggu dihargai di tempat yang nggak pernah benar-benar lihat aku.`},
+{id:'m37',type:'monolog',title:'Deadline Besok Pagi',emotion:'cemas',difficulty:'menengah',theme:'kerja',text:`Jam dua belas malam, dan laporan ini masih separuh jalan.
+Kalau besok pagi nggak selesai, bukan cuma aku yang kena, seluruh tim ikut kena imbasnya.
+Kopi udah abis dua gelas, mata udah perih, tapi otak masih harus jalan.
+Oke, fokus. Satu halaman lagi. Cuma satu halaman lagi sebelum semua ini kelar.`},
+{id:'m38',type:'monolog',title:'Anak Pertama yang Wisuda',emotion:'bangga',difficulty:'mahir',theme:'keluarga',text:`Dari jualan gorengan keliling sampai bisa lihat anak pertama pakai toga hari ini.
+Dulu orang-orang bilang percuma nyekolahin anak tinggi-tinggi kalau cuma anak tukang gorengan.
+Sekarang nama anakku disebut di panggung itu, dengan predikat terbaik di angkatannya.
+Hari ini, untuk pertama kalinya dalam hidup, aku merasa semua kerja keras ini nggak sia-sia.`},
+{id:'m39',type:'monolog',title:'Teman yang Mengkhianati',emotion:'benci',difficulty:'menengah',theme:'persahabatan',text:`Aku cerita rencana bisnis itu cuma ke kamu, nggak ke siapa pun.
+Terus kenapa sekarang ada usaha mirip persis itu, buka duluan, pakai nama kamu?
+Aku nggak minta royalti. Aku cuma minta kejujuran dari orang yang aku anggap sahabat.
+Kita udah selesai. Dan jangan pernah berharap aku percaya siapa pun semudah itu lagi.`},
+{id:'m40',type:'monolog',title:'Kejutan Ulang Tahun Kebalik',emotion:'terkejut',difficulty:'pemula',theme:'komedi',text:`Aku kira aku yang bakal kasih kejutan ke dia, eh malah aku yang disuruh jalan ke ruang gelap duluan.
+Pas lampu nyala, semua orang teriak "SURPRISE!" buat ulang tahun AKU, yang sebenarnya minggu depan!
+Jadi selama ini mereka salah tanggal, dan aku cuma diem aja sambil ketawa dalam hati.
+Ya udah deh, daripada ngoreksi, mending aku terima aja kuenya sekarang, rayain lagi minggu depan.`},
+{id:'m41',type:'monolog',title:'Stasiun Luar Angkasa Sunyi',emotion:'tenang',difficulty:'mahir',theme:'sci-fi',text:`Di sini, tiga ratus kilometer dari Bumi, satu-satunya suara adalah dengungan sistem pendingin.
+Lewat jendela ini, planet kami kelihatan kecil, biru, dan nggak terburu-buru seperti biasanya.
+Semua masalah yang bikin aku pusing di bawah sana, dari sini kelihatan begitu remeh.
+Mungkin kadang kita cuma perlu naik cukup tinggi buat sadar betapa kecilnya semua kekhawatiran kita.`},
+{id:'m42',type:'monolog',title:'Nggak Lulus Lagi',emotion:'putus asa',difficulty:'pemula',theme:'sekolah',text:`Ini kedua kalinya aku nggak lulus ujian itu, padahal aku udah belajar sampai larut tiap malam.
+Semua teman seangkatan udah lanjut, dan aku masih di sini, ngulang dari awal lagi.
+Aku capek dengerin orang bilang "sabar ya, usaha lagi" padahal mereka nggak ngerasain capeknya.
+Tapi berhenti juga bukan pilihan. Jadi besok, aku bakal buka buku itu lagi, buat kesekian kalinya.`},
+{id:'m43',type:'monolog',title:'Sahabat yang Lebih Dekat ke Orang Lain',emotion:'cemburu',difficulty:'mahir',theme:'persahabatan',text:`Sepuluh tahun aku jadi orang pertama yang dia telepon kalau ada masalah.
+Sekarang nama itu digantikan orang yang baru dia kenal enam bulan lalu.
+Aku tau ini egois, tapi aku nggak bisa pura-pura seneng lihat mereka makin dekat.
+Mungkin aku cuma takut, kalau ternyata selama ini akulah yang terlalu bergantung sama dia.`},
+{id:'m44',type:'monolog',title:'Nomor yang Diblokir',emotion:'rindu',difficulty:'menengah',theme:'percintaan',text:`Aku coba telepon lagi, dan lagi-lagi suara itu bilang "nomor tidak terdaftar".
+Padahal nomor itu udah aku hafal luar kepala selama tiga tahun belakangan.
+Aku tau dia blokir aku demi move on, dan aku seharusnya hormati itu.
+Tapi nggak ada yang bisa ngeblokir kenangan yang masih muter terus di kepala aku tiap malam.`},
+{id:'m45',type:'monolog',title:'Digusur dari Tanah Sendiri',emotion:'marah',difficulty:'menengah',theme:'drama-sosial',text:`Surat ini bilang kami harus pindah dalam tujuh hari, dari tanah yang kami tempatin tiga generasi.
+Nggak ada sosialisasi, nggak ada ganti rugi yang layak, cuma selembar kertas dan alat berat.
+Kakek saya mati di rumah ini. Ayah saya lahir di rumah ini. Dan sekarang kalian bilang ini "bukan hak kami"?
+Kami nggak akan pergi semudah itu. Kalau perlu kami lawan ini sampai ke pengadilan tertinggi.`},
+{id:'m46',type:'monolog',title:'Sahabat Pindah Kota',emotion:'sedih',difficulty:'pemula',theme:'persahabatan',text:`Kardus terakhir udah masuk ke mobil pindahan itu.
+Tiga belas tahun kita satu sekolah, satu komplek, hampir satu segalanya.
+Sekarang kamu bakal di kota lain, dan aku harus belajar temenan lewat layar HP doang.
+Jangan lupa aku ya. Soalnya aku nggak akan pernah bisa lupa semua kenangan kita.`},
+{id:'m47',type:'monolog',title:'Diterima di Kampus Impian',emotion:'senang',difficulty:'mahir',theme:'sekolah',text:`Surel ini aku buka berkali-kali, takut salah baca, tapi kata-katanya tetap sama: "Selamat, Anda diterima."
+Kampus ini yang aku incar dari kelas sepuluh, yang bikin aku belajar sampai mata merah tiap malam.
+Semua penolakan dari kampus lain sekarang nggak kerasa penting lagi.
+Aku nggak sabar cerita ke orang tua aku, yang selalu percaya aku bisa sampai sini.`},
+{id:'m48',type:'monolog',title:'Sendirian di Rumah',emotion:'takut',difficulty:'pemula',theme:'horor',text:`Semua orang di rumah lagi pergi, dan aku sendirian sampai besok pagi.
+Kenapa tiba-tiba lampu di dapur mati sendiri, padahal nggak ada mati listrik?
+Aku coba nyalain senter HP, tapi tangan aku gemeteran parah.
+Siapa pun yang ada di luar sana, tolong jangan masuk lewat pintu itu malam ini.`},
+{id:'m49',type:'monolog',title:'Peluncuran Roket Pertama',emotion:'gugup',difficulty:'mahir',theme:'sci-fi',text:`Lima menit menuju peluncuran, dan ini roket pertama yang aku rancang sendiri dari nol.
+Kalau ada satu baut saja yang salah hitung, semua ini bisa meledak di depan mata semua orang.
+Tim di belakangku nunggu aba-aba, tapi tangan aku di atas tombol ini masih ragu sedetik.
+Baiklah. Lima, empat, tiga— semoga semua perhitungan aku benar— dua, satu, luncurkan.`},
+{id:'m50',type:'monolog',title:'Janji Liburan yang Batal',emotion:'kecewa',difficulty:'pemula',theme:'keluarga',text:`Aku udah packing dari kemarin malam, tiket udah dicetak, semua siap.
+Terus Ayah bilang ada kerjaan mendadak, dan liburan ini harus ditunda lagi, kayak tahun lalu.
+Aku ngerti kerjaan itu penting. Tapi aku juga pengen tau kapan giliran aku jadi yang penting.
+Nggak apa-apa. Aku cuma akan simpen tiket ini, buat kenang-kenangan rencana yang gagal lagi.`},
+{id:'m51',type:'monolog',title:'Surat Tanpa Nama',emotion:'cemas',difficulty:'mahir',theme:'misteri',text:`Surat ini masuk lewat celah pintu, tanpa nama pengirim, tanpa alamat balasan.
+Isinya cuma satu kalimat: "Aku tahu apa yang kamu lakukan malam itu."
+Aku udah coba yakinkan diri ini cuma lelucon murahan dari seseorang yang iseng.
+Tapi kenapa tulisan tangan di surat ini persis sama kayak tulisan yang aku kenal betul?`},
+{id:'m52',type:'monolog',title:'Juara Lomba Bareng Tim',emotion:'bangga',difficulty:'pemula',theme:'persahabatan',text:`Piala ini berat banget di tangan, tapi rasanya ringan banget di hati.
+Enam bulan kita latihan bareng tiap sore, kadang berantem soal strategi, tapi tetep solid.
+Nama tim kita dipanggil nomor satu, dan semua orang di panggung itu nangis bareng.
+Ini bukan cuma piala. Ini bukti kalau kita emang pantas disebut tim terbaik tahun ini.`},
+{id:'m53',type:'monolog',title:'Prank yang Keterlaluan',emotion:'benci',difficulty:'pemula',theme:'komedi',text:`Oke, bercanda emang seru, tapi kamu nyebarin video memalukan aku ke seluruh sekolah itu udah kelewatan.
+Semua orang ngetawain aku seharian, dan kamu malah sibuk upload ulang di story.
+Aku pikir kita temenan, bukan bahan konten buat kamu ketawain rame-rame.
+Mulai sekarang, jangan harap aku mau dekat-dekat kamera kamu lagi.`},
+{id:'m54',type:'monolog',title:'Rahasia yang Terbongkar',emotion:'terkejut',difficulty:'menengah',theme:'keluarga',text:`Aku nggak sengaja buka laci itu, cuma nyari gunting kuku.
+Tapi yang aku temuin malah akta adopsi dengan nama aku di sana.
+Selama ini, semua cerita soal "kamu lahir di rumah sakit kota ini" ternyata nggak benar.
+Aku harus tanya langsung ke mereka. Aku berhak tau siapa sebenarnya diri aku.`},
+{id:'m55',type:'monolog',title:'Ujian Terakhir Sudah Selesai',emotion:'tenang',difficulty:'pemula',theme:'sekolah',text:`Pulpen ini baru aja aku taruh, setelah tiga jam penuh ngerjain soal terakhir.
+Nggak ada lagi yang perlu dihafal malam ini, nggak ada lagi rumus yang harus diulang.
+Aku jalan keluar gerbang sekolah pelan-pelan, menikmati udara sore yang biasa aja.
+Entah hasilnya nanti gimana, tapi untuk sekarang, aku cuma mau menikmati rasa lega ini dulu.`},
+{id:'m56',type:'monolog',title:'Terkunci di Ruang Bawah Tanah',emotion:'putus asa',difficulty:'mahir',theme:'horor',text:`Pintu ini udah aku dorong berkali-kali, tapi tetap nggak mau bergerak sedikit pun.
+Baterai senter tinggal sepuluh persen, dan sinyal HP di sini nol total.
+Aku teriak minta tolong sampai suara aku serak, tapi nggak ada yang dengar dari atas sana.
+Baiklah. Kalau teriak nggak berguna, aku harus cari jalan lain sebelum senter ini mati total.`},
+{id:'m57',type:'monolog',title:'Juara Kelas yang Baru',emotion:'cemburu',difficulty:'pemula',theme:'sekolah',text:`Tiga tahun berturut-turut nama aku yang disebut juara kelas, sekarang digantikan anak pindahan itu.
+Aku tau harusnya aku seneng ada saingan baru biar makin semangat belajar.
+Tapi kenapa rasanya kayak semua usaha aku selama ini tiba-tiba nggak ada artinya?
+Oke. Mulai besok, aku belajar lebih keras lagi. Aku nggak akan ngalah semudah ini.`},
+{id:'m58',type:'monolog',title:'Surat dari Perantauan',emotion:'rindu',difficulty:'mahir',theme:'drama-sosial',text:`Surat ini sampai setelah dua bulan perjalanan dari negeri orang, tulisannya udah mulai pudar.
+Ibu nulis katanya rindu masakan aku, padahal dulu aku yang selalu minta masakan Ibu.
+Lima tahun kerja di negeri orang demi biaya sekolah adik, dan aku belum pulang sekali pun.
+Tahun ini, apa pun yang terjadi, aku harus pulang. Uang bisa dicari lagi, tapi waktu sama keluarga nggak bisa.`},
+{id:'m59',type:'monolog',title:'Pengkhianatan Sang Ksatria',emotion:'marah',difficulty:'mahir',theme:'fantasi',text:`Aku bersumpah setia pada kerajaan ini sejak usia lima belas tahun, dengan darah dan luka di sekujur tubuh.
+Dan sekarang raja yang aku lindungi sendiri memerintahkan aku ditangkap, demi menutupi kesalahannya sendiri.
+Semua medali ini, semua gelar kesatria ini, ternyata nggak ada artinya di hadapan kebohongan istana.
+Baiklah, Yang Mulia. Kalau begitu caranya, pedang ini tidak akan lagi membela tahta yang busuk ini.`},
+{id:'m60',type:'monolog',title:'Planet yang Ditinggalkan',emotion:'sedih',difficulty:'mahir',theme:'sci-fi',text:`Kapal terakhir sudah berangkat dua jam lalu, membawa seluruh penduduk yang tersisa.
+Aku memilih tinggal, mencatat detik terakhir planet ini sebelum atmosfernya runtuh total.
+Lewat kamera ini, mungkin generasi berikutnya bisa belajar dari kesalahan kami merawat rumah sendiri.
+Selamat tinggal, Bumi. Maaf, kami baru sadar betapa berharganya kamu setelah semuanya terlambat.`},
+{id:'m61',type:'monolog',title:'Bayi Pertama Lahir',emotion:'senang',difficulty:'menengah',theme:'keluarga',text:`Suster baru aja bilang, "Selamat, Pak, anaknya perempuan, sehat semua."
+Aku dengar tangisan pertamanya, dan kaki aku langsung lemes seketika saking leganya.
+Sembilan bulan penuh kekhawatiran, dan sekarang dia ada di sini, kecil banget di gendongan aku.
+Halo, Nak. Selamat datang di dunia. Ayah janji bakal jaga kamu sebaik mungkin, selamanya.`},
+{id:'m62',type:'monolog',title:'Diikuti Sejak Tadi',emotion:'takut',difficulty:'menengah',theme:'misteri',text:`Sejak keluar dari halte tadi, aku ngerasa ada yang jalan persis di belakang aku.
+Aku udah belok tiga kali ke jalan yang nggak biasa aku lewatin, tapi langkah itu tetap ngikutin.
+Aku takut noleh, tapi aku lebih takut kalau terus jalan tanpa tau siapa orangnya.
+Baiklah. Di persimpangan depan ini, aku akan noleh cepat, dan semoga aku salah sangka.`},
+{id:'m63',type:'monolog',title:'Lamaran di Depan Keluarga',emotion:'gugup',difficulty:'pemula',theme:'komedi',text:`Cincin ini udah aku sembunyiin di saku jaket dari tadi pagi, dan tangan aku udah berkeringat dingin.
+Seluruh keluarga besar lagi ngumpul, dan aku harus ngomong di depan semua orang ini.
+Kenapa tiba-tiba kaki meja ini kerasa menarik banget buat dijadiin alasan nunduk terus?
+Baiklah, semuanya, tolong dengerin aku sebentar— um, pertama-tama, terima kasih sudah hadir, dan...`},
+{id:'m64',type:'monolog',title:'Lamaran yang Ditolak',emotion:'kecewa',difficulty:'mahir',theme:'percintaan',text:`Aku udah latihan kalimat ini berminggu-minggu, bahkan udah booking tempat paling romantis yang aku bisa.
+Dan jawabannya cuma, "Aku sayang kamu, tapi aku belum siap untuk ini."
+Aku ngerti, aku beneran ngerti. Tapi kenapa rasanya kayak semua rencana masa depan aku runtuh sekaligus?
+Nggak apa-apa. Cincin ini bisa nunggu. Yang penting sekarang, aku harus belajar nerima jawaban itu dengan kepala dingin.`},
+{id:'m65',type:'monolog',title:'Hari Pertama Kerja',emotion:'cemas',difficulty:'pemula',theme:'kerja',text:`Jam enam pagi aku udah bangun, padahal kerjaan baru mulai jam sembilan.
+Baju ini udah aku setrika tiga kali, takut ada lipatan yang kelihatan nggak rapi.
+Gimana kalau aku salah manggil nama atasan? Gimana kalau aku keliatan gagap di depan tim baru?
+Oke, tarik napas. Ini cuma hari pertama. Semua orang juga pernah ngerasain gugup kayak gini.`},
+{id:'m66',type:'monolog',title:'Jadi Ketua OSIS',emotion:'bangga',difficulty:'menengah',theme:'sekolah',text:`Suara voting baru aja diumumkan, dan nama aku yang disebut sebagai ketua OSIS tahun ini.
+Dulu aku anak yang paling pendiam di kelas, jarang ada yang hafal nama aku.
+Sekarang tiga ratus murid percaya aku buat mewakili suara mereka.
+Aku janji, aku nggak akan sia-siain kepercayaan ini cuma buat gelar doang.`},
+{id:'m67',type:'monolog',title:'Perjanjian dengan Iblis',emotion:'benci',difficulty:'mahir',theme:'supernatural',text:`Kamu bilang perjanjian ini bakal nyelametin keluarga aku. Kamu bohong besar.
+Adik aku memang sembuh, tapi dia sekarang jadi orang yang nggak aku kenal lagi.
+Aku serahkan jiwa aku demi dia, dan kamu malah mainin kata-kata dalam kontrak itu.
+Aku akan cari cara buat batalin ini, walau aku harus turun langsung ke nerakamu sekalipun.`},
+{id:'m68',type:'monolog',title:'Kutukan yang Terungkap',emotion:'terkejut',difficulty:'mahir',theme:'fantasi',text:`Buku kuno ini menyebutkan kutukan itu diturunkan dari garis keturunan aku sendiri.
+Jadi selama ini, bukan musuh dari luar yang menghancurkan desa ini, tapi leluhur aku sendiri.
+Semua pencarian aku selama bertahun-tahun, ternyata mengarah balik ke keluarga aku sendiri.
+Aku harus memilih sekarang: menghapus garis keturunan ini, atau membiarkan kutukan ini terus berlanjut.`},
+{id:'m69',type:'monolog',title:'Menerima Perpisahan',emotion:'tenang',difficulty:'menengah',theme:'percintaan',text:`Udah enam bulan sejak kita putus, dan hari ini aku lihat foto kalian berdua di linimasa.
+Dulu aku pikir bakal sesak banget kalau lihat ini. Ternyata aku cuma senyum tipis aja.
+Mungkin ini artinya aku udah beneran sembuh, bukan cuma pura-pura kuat.
+Semoga kamu bahagia di sana. Dan aku, dengan tenang, akan terus jalan ke arah aku sendiri.`},
+{id:'m70',type:'monolog',title:'Ditinggal Sendirian',emotion:'putus asa',difficulty:'menengah',theme:'persahabatan',text:`Grup chat kita yang dulu ramai, sekarang sepi, dan aku satu-satunya yang masih aktif di sana.
+Semua orang punya kesibukan baru, pasangan baru, circle baru yang nggak ada aku di dalamnya.
+Aku bukan nggak seneng mereka bahagia. Aku cuma bingung di mana posisi aku sekarang.
+Mungkin aku cuma perlu waktu buat belajar sendirian dulu, sebelum nemuin circle yang baru lagi.`},
+{id:'m71',type:'monolog',title:'Rekan Kerja yang Lebih Disukai Bos',emotion:'cemburu',difficulty:'menengah',theme:'kerja',text:`Setiap ide aku di rapat selalu dibantah, tapi begitu dia yang ngomong ide yang sama, langsung disetujui.
+Aku udah kerja di sini lebih lama, tapi kenapa dia selalu yang dipuji di depan semua orang?
+Aku nggak mau jadi orang yang iri sama rekan sendiri. Tapi ini udah kelewat sering.
+Mungkin saatnya aku ngomong langsung ke bos, daripada terus mendem perasaan ini sendirian.`},
+{id:'m72',type:'monolog',title:'Masa SMA yang Hilang',emotion:'rindu',difficulty:'pemula',theme:'sekolah',text:`Seragam ini masih nyimpen bau khas ruang kelas yang dulu selalu bau kapur dan keringat.
+Dulu aku pikir tiga tahun SMA itu lama banget, nggak sabar pengen cepet lulus.
+Sekarang, setelah lima tahun berlalu, aku baru sadar betapa sederhananya masalah waktu itu.
+Kalau bisa muter waktu, aku pengen duduk lagi di bangku paling belakang itu, walau cuma sehari.`},
+{id:'m73',type:'monolog',title:'Dipaksa Menikah',emotion:'marah',difficulty:'mahir',theme:'keluarga',text:`Kalian udah atur semua ini di belakang aku, bahkan tanggal pernikahannya udah ditentuin tanpa tanya aku dulu.
+Aku ngerti ini demi "menjaga nama baik keluarga". Tapi nama baik siapa sebenarnya yang kalian jaga?
+Aku punya hidup aku sendiri, punya mimpi yang nggak pernah kalian tanyain sekali pun.
+Kalau kalian paksa aku berdiri di depan altar itu, kalian harus siap aku jawab "tidak" di depan semua tamu.`},
+{id:'m74',type:'monolog',title:'Terakhir Kali Jadi Manusia',emotion:'sedih',difficulty:'mahir',theme:'fantasi',text:`Matahari terbenam ini akan jadi yang terakhir aku lihat dengan mata manusia.
+Kutukan itu akan sempurna begitu malam tiba, mengubahku selamanya jadi makhluk yang mereka takuti.
+Aku sempat berharap ada yang datang menyelamatkan, tapi mungkin memang bukan itu takdirku.
+Baiklah. Kalau ini perpisahan dengan diriku yang lama, biar aku habiskan detik terakhir ini mengingat semua yang pernah aku cintai.`},
+{id:'m75',type:'monolog',title:'Dapat Bantuan Tepat Waktu',emotion:'senang',difficulty:'pemula',theme:'drama-sosial',text:`Tiga hari ini kami cuma makan nasi putih sama kecap, dan aku udah nggak tau harus minta tolong ke siapa lagi.
+Terus tadi pagi, ada relawan dateng bawa sembako, pas banget persediaan kami bener-bener habis.
+Aku sampai nggak bisa ngomong apa-apa, cuma bisa meluk dia sambil nangis di depan pintu.
+Terima kasih, terima kasih banyak. Bantuan ini dateng di saat yang paling kami butuhkan.`},
+
+{id:'d31',type:'dialog',title:'Contekan Ketahuan',emotion:'marah',difficulty:'pemula',theme:'sekolah',characters:['GURU','MURID'],text:`GURU: Kertas ini ada di bawah meja kamu. Ini jawaban persis sama dengan punya temanmu.
+MURID: Saya cuma pinjem buat ngecek jawaban terakhir, Bu, bukan nyontek dari awal.
+GURU: Mencontek itu tetap mencontek, berapa pun soal yang kamu salin.
+MURID: Tapi Bu, kalau saya nggak lolos ujian ini, saya bisa nggak naik kelas...
+GURU: Harusnya itu kamu pikirkan sebelum buka contekan itu, bukan sekarang.
+MURID: Maaf, Bu. Saya janji nggak akan ulangi lagi.`},
+{id:'d32',type:'dialog',title:'Kursi Kosong Ayah',emotion:'sedih',difficulty:'menengah',theme:'keluarga',characters:['IBU','ANAK'],text:`ANAK: Bu, kenapa piringnya masih disiapin empat? Kan kita cuma bertiga sekarang.
+IBU: (terdiam) Ibu... Ibu lupa, kebiasaan lama susah hilang, Nak.
+ANAK: Nggak apa-apa kok, Bu. Aku juga kadang masih manggil nama Ayah tanpa sadar.
+IBU: Ibu kangen banget sama dia. Tapi Ibu nggak mau kamu lihat Ibu sedih terus.
+ANAK: Nggak apa-apa sedih, Bu. Kita bisa sedih bareng-bareng kok.
+IBU: (memeluk anaknya) Makasih udah selalu ada buat Ibu, Nak.`},
+{id:'d33',type:'dialog',title:'Diterima Kerja',emotion:'senang',difficulty:'pemula',theme:'kerja',characters:['REKRUTER','PELAMAR'],text:`REKRUTER: Selamat, kamu resmi diterima untuk posisi ini mulai Senin depan.
+PELAMAR: Serius, Pak? Saya— saya sampai nggak nyangka bisa diterima secepat ini!
+REKRUTER: Pengalaman kamu di wawancara kemarin memang paling menonjol dari semua kandidat.
+PELAMAR: Terima kasih banyak, Pak, ini kesempatan yang saya tunggu bertahun-tahun.
+REKRUTER: Sampai jumpa hari Senin. Selamat bergabung dengan tim kami.
+PELAMAR: Siap, Pak! Saya nggak akan mengecewakan kepercayaan ini.`},
+{id:'d34',type:'dialog',title:'Boneka Warisan',emotion:'takut',difficulty:'mahir',theme:'supernatural',characters:['LINA','OMA'],text:`LINA: Oma, boneka ini kok posisinya pindah-pindah terus tiap pagi?
+OMA: (wajah pucat) Jangan pernah bukain kunci lemari itu lagi, Lina.
+LINA: Semalam aku denger dia manggil nama aku, Oma. Aku nggak bohong.
+OMA: Itu artinya dia mulai mengenali kamu. Ini berbahaya, Nak.
+LINA: Jadi boneka ini... beneran hidup, Oma?
+OMA: Boneka itu bukan sekadar boneka. Dia titipan nenek buyutmu, dan dia belum rela pergi.`},
+{id:'d35',type:'dialog',title:'Nembak di Taman',emotion:'gugup',difficulty:'pemula',theme:'percintaan',characters:['ARDI','SASA'],text:`ARDI: Sasa, aku... aku udah nyiapin ini dari kemarin malam.
+SASA: Eh? Itu bunga buat aku? Ada acara apa emangnya?
+ARDI: Nggak ada acara apa-apa, aku cuma— aku cuma mau bilang aku suka kamu.
+SASA: (terkejut sebentar, lalu tersenyum) Ya ampun, Ardi, kenapa gemeteran banget gini?
+ARDI: Soalnya ini pertama kalinya aku berani ngomong kayak gini ke siapa pun.
+SASA: Kalau gitu, terima kasih udah berani. Jawabannya iya, Ardi.`},
+{id:'d36',type:'dialog',title:'Posisi yang Diberikan ke Orang Lain',emotion:'kecewa',difficulty:'mahir',theme:'kerja',characters:['ATASAN','KARYAWAN'],text:`ATASAN: Posisi manajer itu akhirnya kami berikan ke Pak Andre.
+KARYAWAN: Boleh saya tanya, Pak, apa yang kurang dari kinerja saya selama tiga tahun ini?
+ATASAN: Bukan soal kurang, kami cuma merasa Pak Andre lebih cocok untuk saat ini.
+KARYAWAN: Saya yang pegang semua proyek besar tahun ini, Pak. Itu nggak dipertimbangkan?
+ATASAN: Saya mengerti kekecewaan Anda. Tapi keputusan ini sudah final dari direksi.
+KARYAWAN: Baik, Pak. Saya akan pikirkan langkah saya selanjutnya setelah ini.`},
+{id:'d37',type:'dialog',title:'Deadline Bentrok',emotion:'cemas',difficulty:'menengah',theme:'kerja',characters:['DIMAS','PUTRI'],text:`DIMAS: Laporan klien A sama klien B deadline-nya sama-sama besok pagi. Gimana ini?
+PUTRI: Kita bagi aja, aku pegang klien A, kamu fokus ke klien B.
+DIMAS: Tapi data klien A belum lengkap, masih nunggu konfirmasi dari tim lapangan.
+PUTRI: Kalau gitu kita susun draft dulu pakai data yang ada, revisi begitu data lengkap.
+DIMAS: Oke, aku setuju. Semoga malam ini kita bisa kelar berdua.
+PUTRI: Pasti bisa. Kita udah pernah lebih parah dari ini juga.`},
+{id:'d38',type:'dialog',title:'Wisuda Anak Pertama',emotion:'bangga',difficulty:'mahir',theme:'keluarga',characters:['AYAH','ANAK'],text:`AYAH: Lihat kamu sekarang, pakai toga, berdiri di depan ribuan orang.
+ANAK: Ini semua berkat Ayah yang kerja banting tulang biar aku bisa kuliah.
+AYAH: Ayah cuma kerja. Kamu yang berjuang sendiri lewat semua tugas dan begadang itu.
+ANAK: Aku pengen Ayah tau, gelar ini bukan cuma punya aku, tapi punya kita berdua.
+AYAH: (menahan haru) Ayah... Ayah bangga banget sama kamu, Nak.
+ANAK: Terima kasih udah nggak pernah berhenti percaya sama aku, Yah.`},
+{id:'d39',type:'dialog',title:'Sahabat yang Berkhianat',emotion:'benci',difficulty:'menengah',theme:'persahabatan',characters:['DEWI','PUTRI'],text:`DEWI: Kamu sebarin chat pribadi aku ke seluruh angkatan. Kenapa, Put?
+PUTRI: Aku... aku nggak sengaja, itu kebuka sendiri pas aku mau kirim ke orang lain.
+DEWI: Chat itu ada di folder khusus, Put. Nggak mungkin kebuka sendiri.
+PUTRI: Oke, aku emang sengaja. Aku kesel kamu lebih deket sama yang lain belakangan ini.
+DEWI: Jadi kamu hancurin kepercayaan aku cuma karena cemburu? Itu alasan kamu?
+PUTRI: Aku tau ini salah. Aku... aku nggak tau harus minta maaf gimana lagi.`},
+{id:'d40',type:'dialog',title:'Kejutan Kebalik',emotion:'terkejut',difficulty:'pemula',theme:'komedi',characters:['IBU','ANAK'],text:`ANAK: Bu, aku udah siapin kejutan buat ulang tahun Bunda minggu depan nih!
+IBU: Lho, ulang tahun Ibu kan bulan depan, Nak, bukan minggu depan.
+ANAK: Hah? Tapi kalender di HP aku bilang hari ini tanggalnya...
+IBU: (ketawa) Itu kalender tahun lalu kali, coba cek lagi deh.
+ANAK: Duh, malu banget, aku udah pesen kue sama balon dari kemarin.
+IBU: Ya udah, daripada mubazir, kita makan kuenya aja sekarang, rayain lagi bulan depan!`},
+{id:'d41',type:'dialog',title:'Stasiun yang Sunyi',emotion:'tenang',difficulty:'mahir',theme:'sci-fi',characters:['KOMANDAN','KRU'],text:`KRU: Komandan, semua modul sudah dicek, tidak ada anomali.
+KOMANDAN: Bagus. Kadang keheningan seperti ini yang paling aku syukuri di sini.
+KRU: Apa Komandan tidak rindu suara ramai di Bumi?
+KOMANDAN: Rindu. Tapi di sini aku belajar mendengar hal lain— detak jantungku sendiri, misalnya.
+KRU: Saya rasa saya mulai memahami kenapa Komandan selalu minta jadwal jaga malam.
+KOMANDAN: Karena di jam seperti ini, alam semesta terasa seperti sedang bicara pelan-pelan ke kita.`},
+{id:'d42',type:'dialog',title:'Gagal Lagi',emotion:'putus asa',difficulty:'pemula',theme:'sekolah',characters:['SISWA','WALI KELAS'],text:`SISWA: Bu, saya nggak lulus ujian susulan ini juga. Udah yang kedua kalinya.
+WALI KELAS: Ibu tahu kamu sudah berusaha keras. Tapi kita cari tahu dulu, apa yang bikin susah.
+SISWA: Saya udah belajar tiap malam, Bu, tapi pas ujian semua jadi kosong di kepala.
+WALI KELAS: Mungkin kamu butuh cara belajar lain, bukan cuma belajar lebih keras.
+SISWA: Saya takut dianggap bodoh sama teman-teman, Bu.
+WALI KELAS: Kamu nggak bodoh, Nak. Kamu cuma belum nemuin cara yang pas buat kamu.`},
+{id:'d43',type:'dialog',title:'Sahabat Baru yang Lebih Dekat',emotion:'cemburu',difficulty:'mahir',theme:'persahabatan',characters:['RANI','SASA'],text:`RANI: Kamu udah jarang bales chat aku, tapi sama anak baru itu bisa chat sampai subuh.
+SASA: Dia lagi butuh temen cerita, Ran, dia baru pindah dan belum kenal siapa-siapa.
+RANI: Aku juga butuh kamu. Tapi kayaknya kamu nggak sadar itu.
+SASA: Kamu cemburu? Rani, kita udah sepuluh tahun temenan, itu nggak akan berubah.
+RANI: Aku tau ini kekanak-kanakan. Aku cuma takut kehilangan posisi aku di hidup kamu.
+SASA: Posisi kamu nggak akan tergantikan. Maaf kalau aku bikin kamu ngerasa begitu.`},
+{id:'d44',type:'dialog',title:'Nomor Diblokir',emotion:'rindu',difficulty:'menengah',theme:'percintaan',characters:['ALDO','NIA'],text:`ALDO: (menelepon dari nomor baru) Nia, ini aku, Aldo. Jangan tutup dulu, please.
+NIA: Aldo? Kenapa kamu telepon pakai nomor lain, aku kan udah blokir nomor kamu.
+ALDO: Aku tau. Aku cuma pengen denger suara kamu sekali lagi, itu aja.
+NIA: Kita udah sepakat buat berhenti kontak, Al. Ini nggak baik buat kita berdua.
+ALDO: Aku ngerti. Maaf udah ganggu. Aku cuma... masih belum bisa move on secepat kamu.
+NIA: (terdiam lama) Jaga diri kamu baik-baik, ya, Aldo.`},
+{id:'d45',type:'dialog',title:'Penggusuran',emotion:'marah',difficulty:'menengah',theme:'drama-sosial',characters:['WARGA','PETUGAS'],text:`WARGA: Kalian datang bawa alat berat tanpa sosialisasi sama sekali ke kami!
+PETUGAS: Surat pemberitahuan sudah kami kirim bulan lalu, Pak, sesuai prosedur.
+WARGA: Surat itu datang sehari sebelum eksekusi, itu bukan sosialisasi, itu pemberitahuan sepihak!
+PETUGAS: Kami hanya menjalankan perintah, Pak. Keputusan ada di tangan pemerintah kota.
+WARGA: Tiga generasi keluarga saya lahir di tanah ini. Kalian mau gusur semudah itu?
+PETUGAS: Saya paham kemarahan Bapak. Tapi saya sarankan tempuh jalur hukum, bukan konfrontasi di sini.`},
+{id:'d46',type:'dialog',title:'Sahabat Pindah Kota',emotion:'sedih',difficulty:'pemula',theme:'persahabatan',characters:['RIO','FIRA'],text:`FIRA: Ini kardus terakhir, Ri. Besok pagi kita berangkat ke kota baru.
+RIO: Tiga belas tahun kita satu sekolah, sekarang kamu pergi gitu aja.
+FIRA: Aku juga berat, Ri. Tapi Ayah dipindahtugaskan, aku nggak bisa nolak.
+RIO: Janji video call tiap minggu ya, jangan sampai kita lupa satu sama lain.
+FIRA: Janji. Kamu juga jangan cari sahabat baru yang ngalahin aku, ya!
+RIO: Nggak akan ada yang bisa gantiin kamu, Fir. Hati-hati di jalan.`},
+{id:'d47',type:'dialog',title:'Diterima Kuliah',emotion:'senang',difficulty:'mahir',theme:'sekolah',characters:['ANAK','ORANG TUA'],text:`ANAK: Bu, Pak, saya diterima! Saya diterima di kampus yang kita incar dari dulu!
+ORANG TUA: Beneran, Nak? Coba tunjukkan suratnya ke Ibu!
+ANAK: Ini, Bu, lihat sendiri. Nama saya ada di daftar penerima beasiswa penuh.
+ORANG TUA: (memeluk erat) Ibu sama Bapak selalu tau kamu bisa sampai sejauh ini.
+ANAK: Ini berkat Bapak yang kerja lembur tiap malam demi les tambahan saya.
+ORANG TUA: Sekarang giliran kamu yang bersinar, Nak. Kami akan selalu dukung dari belakang.`},
+{id:'d48',type:'dialog',title:'Sendirian di Rumah',emotion:'takut',difficulty:'pemula',theme:'horor',characters:['ANISA','PENELEPON'],text:`ANISA: Halo? Siapa ini? Dari tadi cuma diem doang di telepon.
+PENELEPON: (suara berat, pelan) ...kamu sendirian di rumah itu, kan?
+ANISA: Si-siapa ini? Kok tau saya sendirian di rumah?
+PENELEPON: Coba lihat ke jendela kamar kamu sekarang juga.
+ANISA: (gemetar) Saya— saya mau tutup telepon ini sekarang.
+PENELEPON: Jangan tutup teleponnya. Aku baru saja mengetuk pintu depan rumahmu.`},
+{id:'d49',type:'dialog',title:'Peluncuran Perdana',emotion:'gugup',difficulty:'mahir',theme:'sci-fi',characters:['KAPTEN','KOPILOT'],text:`KOPILOT: Kapten, semua sistem hijau, tinggal menunggu aba-aba dari Kapten.
+KAPTEN: Ini roket pertama yang aku kemudikan sendiri sejak lulus pelatihan.
+KOPILOT: Kapten pasti bisa. Kita sudah simulasi ratusan kali untuk momen ini.
+KAPTEN: Simulasi tidak pernah membuat tangan aku berkeringat seperti sekarang.
+KOPILOT: Lima detik lagi, Kapten. Tarik napas, dan percaya pada latihan kita.
+KAPTEN: Baik. Tiga, dua, satu— meluncur!`},
+{id:'d50',type:'dialog',title:'Liburan Batal',emotion:'kecewa',difficulty:'pemula',theme:'keluarga',characters:['ANAK','AYAH'],text:`ANAK: Yah, kok koper aku disuruh dimasukin lagi ke gudang?
+AYAH: Maaf, Nak, liburan kita harus ditunda, ada kerjaan mendadak dari kantor.
+ANAK: Tapi Ayah udah janji dari bulan lalu, aku udah cerita ke semua teman.
+AYAH: Ayah tau Ayah janji. Ayah akan ganti liburan ini secepatnya, Ayah janji lagi.
+ANAK: Ayah selalu bilang gitu tiap kali batal, Yah.
+AYAH: (menghela napas) Kamu benar. Kali ini, Ayah akan benar-benar tepati, apa pun yang terjadi.`},
+{id:'d51',type:'dialog',title:'Surat Ancaman',emotion:'cemas',difficulty:'mahir',theme:'misteri',characters:['DETEKTIF','KORBAN'],text:`KORBAN: Surat ini masuk lewat celah pintu semalam, Pak. Saya nggak berani sentuh lagi.
+DETEKTIF: Boleh saya lihat? Tulisan tangan ini... apa Anda mengenali gaya tulisannya?
+KORBAN: Rasanya familiar, Pak, tapi saya nggak yakin siapa persisnya.
+DETEKTIF: Isinya bilang dia tahu apa yang Anda lakukan malam itu. Malam apa maksudnya?
+KORBAN: (terdiam gugup) Saya... saya nggak tahu, Pak. Mungkin cuma orang iseng.
+DETEKTIF: Saya rasa Anda tahu lebih banyak dari yang Anda ceritakan, Bu.`},
+{id:'d52',type:'dialog',title:'Juara Lomba',emotion:'bangga',difficulty:'pemula',theme:'persahabatan',characters:['TIM','PELATIH'],text:`PELATIH: Kalian resmi jadi juara satu lomba tingkat provinsi tahun ini!
+TIM: Serius, Pak?! Kita beneran menang setelah enam bulan latihan tiap sore?!
+PELATIH: Bapak bangga banget sama kalian. Kerja keras kalian nggak sia-sia.
+TIM: Ini berkat Bapak yang sabar banget ngelatih kita yang suka berantem sendiri.
+PELATIH: Justru kekompakan kalian setelah berantem itu yang bikin kalian kuat.
+TIM: Ayo kita foto bareng piala ini, Pak! Ini momen yang nggak boleh dilewatin!`},
+{id:'d53',type:'dialog',title:'Prank Kedua',emotion:'benci',difficulty:'pemula',theme:'komedi',characters:['DIKI','BAGAS'],text:`DIKI: Bagas, serius deh, kamu nyemprot aku pakai air got tadi?!
+BAGAS: (ketawa ngakak) Habis kamu kemarin prank aku pakai telur busuk, Dik!
+DIKI: Itu kan cuma telur, ini AIR GOT, baunya nggak bakal ilang seharian!
+BAGAS: Oke, oke, maaf, aku keterlaluan. Nih handuk, mandi dulu sana.
+DIKI: Awas aja kalau ada prank ketiga, aku bener-bener bakal bales dua kali lipat.
+BAGAS: Hahaha siap, aku tunggu balasannya, Dik!`},
+{id:'d54',type:'dialog',title:'Rahasia Terbongkar',emotion:'terkejut',difficulty:'menengah',theme:'keluarga',characters:['IBU','ANAK'],text:`ANAK: Bu, ini apa? Saya nemu akta adopsi dengan nama saya di laci ini.
+IBU: (terdiam lama) Nak, duduk dulu. Ibu akan jelasin semuanya.
+ANAK: Jadi selama ini cerita soal saya lahir di rumah sakit kota itu bohong?
+IBU: Ibu minta maaf sudah menyembunyikan ini selama bertahun-tahun.
+ANAK: Kenapa, Bu? Kenapa nggak pernah bilang dari dulu?
+IBU: Ibu takut kehilangan kamu, Nak. Tapi kamu berhak tahu kebenarannya sekarang.`},
+{id:'d55',type:'dialog',title:'Ujian Usai',emotion:'tenang',difficulty:'pemula',theme:'sekolah',characters:['GURU','MURID'],text:`MURID: Bu, ini lembar jawaban terakhir saya.
+GURU: Terima kasih. Gimana rasanya setelah tiga jam penuh ujian?
+MURID: Lega banget, Bu. Entah hasilnya nanti gimana, yang penting saya udah usaha maksimal.
+GURU: Itu sikap yang bagus. Hasil itu urusan belakangan.
+MURID: Terima kasih udah sabar ngajarin kami semester ini, Bu.
+GURU: Sama-sama, Nak. Selamat beristirahat, kalian pantas dapat itu.`},
+{id:'d56',type:'dialog',title:'Terkunci di Ruang Bawah Tanah',emotion:'putus asa',difficulty:'mahir',theme:'horor',characters:['AMIR','DEWI'],text:`AMIR: Pintu ini nggak mau kebuka sama sekali, Dew. Udah aku dorong berkali-kali.
+DEWI: Senter kita tinggal lima belas persen, Mir, dan sinyal HP di sini nol total.
+AMIR: Aku udah teriak minta tolong sampai suara aku habis, nggak ada yang dengar.
+DEWI: Coba kita cari ventilasi di sudut ruangan ini, mungkin ada jalan keluar lain.
+AMIR: Oke, kita pisah cari, tapi tetap saling teriak biar nggak kehilangan arah.
+DEWI: Jangan jauh-jauh, Mir. Aku nggak mau sendirian di tempat seperti ini.`},
+{id:'d57',type:'dialog',title:'Juara Baru',emotion:'cemburu',difficulty:'pemula',theme:'sekolah',characters:['SARA','RINA'],text:`SARA: Kamu liat pengumuman tadi? Rina sekarang juara satu, geser posisi aku.
+RINA: Aku juga kaget, Sar, aku cuma belajar seperti biasa aja kok.
+SARA: Tiga tahun aku jadi juara kelas, sekarang kamu baru pindah udah ngalahin aku.
+RINA: Aku nggak maksud ngalahin siapa-siapa, Sar. Aku nggak enak kalau kamu ngerasa gitu.
+SARA: (menghela napas) Bukan salah kamu sih. Aku cuma perlu belajar lebih keras lagi.
+RINA: Kalau mau, kita belajar bareng aja. Biar kita berdua yang gantian juara.`},
+{id:'d58',type:'dialog',title:'Telepon dari Perantauan',emotion:'rindu',difficulty:'mahir',theme:'drama-sosial',characters:['IBU','ANAK PERANTAU'],text:`ANAK PERANTAU: Bu, maaf baru bisa telepon, sinyal di sini susah banget.
+IBU: Nggak apa-apa, Nak. Yang penting Ibu bisa dengar suara kamu malam ini.
+ANAK PERANTAU: Saya kangen masakan Ibu. Di sini saya cuma makan seadanya tiap hari.
+IBU: Ibu juga kangen kamu, Nak. Rumah ini sepi sejak kamu merantau.
+ANAK PERANTAU: Tahun ini saya pasti pulang, Bu. Saya janji, apa pun yang terjadi.
+IBU: Ibu akan tunggu, Nak. Jaga diri baik-baik di sana.`},
+{id:'d59',type:'dialog',title:'Pengkhianatan',emotion:'marah',difficulty:'mahir',theme:'fantasi',characters:['RAJA','KSATRIA'],text:`RAJA: Kesatria, kamu ditangkap atas tuduhan pengkhianatan terhadap kerajaan.
+KSATRIA: Pengkhianatan? Saya yang membela kerajaan ini sejak usia lima belas tahun!
+RAJA: Bukti menunjukkan kamu bersekongkol dengan musuh dari utara.
+KSATRIA: Bukti itu palsu, Yang Mulia, dan Anda tahu betul siapa yang memalsukannya.
+RAJA: Aku tidak punya pilihan selain mempercayai bukti yang ada di hadapanku.
+KSATRIA: Kalau begitu, pedang ini tidak akan lagi membela tahta yang buta seperti ini.`},
+{id:'d60',type:'dialog',title:'Planet Ditinggalkan',emotion:'sedih',difficulty:'menengah',theme:'sci-fi',characters:['ASTRONOT 1','ASTRONOT 2'],text:`ASTRONOT 1: Kapal terakhir sudah berangkat. Kita satu-satunya yang masih di sini.
+ASTRONOT 2: Aku memilih tinggal untuk mencatat detik terakhir planet ini.
+ASTRONOT 1: Apa kamu menyesal tidak ikut dengan yang lain?
+ASTRONOT 2: Tidak. Seseorang harus menjadi saksi, agar ini tidak terulang lagi di tempat lain.
+ASTRONOT 1: Aku akan menemanimu sampai akhir, kalau begitu.
+ASTRONOT 2: Terima kasih. Setidaknya kita tidak sendirian menyaksikan ini.`},
+{id:'d61',type:'dialog',title:'Bayi Lahir',emotion:'senang',difficulty:'menengah',theme:'keluarga',characters:['SUAMI','ISTRI'],text:`SUAMI: Sayang, kamu hebat banget. Dia sehat, cantik, persis kayak kamu.
+ISTRI: (lemas tapi tersenyum) Boleh aku gendong dia sekarang?
+SUAMI: Tentu. Nih, hati-hati kepalanya.
+ISTRI: Halo, Nak. Kami udah nunggu kamu sembilan bulan ini.
+SUAMI: Selamat datang di keluarga kita, Nak. Ayah janji bakal selalu jaga kalian berdua.
+ISTRI: Ini hari paling membahagiakan dalam hidup aku.`},
+{id:'d62',type:'dialog',title:'Diikuti',emotion:'takut',difficulty:'menengah',theme:'misteri',characters:['WANITA','TEMAN'],text:`WANITA: (menelepon sambil jalan cepat) Aku rasa ada yang ngikutin aku dari halte tadi.
+TEMAN: Kamu di mana sekarang? Coba masuk ke toko yang ramai dulu.
+WANITA: Aku udah belok tiga kali, tapi langkah itu tetap ngikutin dari belakang.
+TEMAN: Oke, aku langsung ke sana sekarang. Tetap di telepon sama aku, jangan tutup.
+WANITA: Aku takut noleh, tapi aku juga nggak tahan nggak tahu siapa orangnya.
+TEMAN: Jangan noleh dulu. Tunggu aku datang, lima menit lagi aku sampai.`},
+{id:'d63',type:'dialog',title:'Lamaran Depan Keluarga',emotion:'gugup',difficulty:'pemula',theme:'komedi',characters:['CALON MENANTU','CALON MERTUA'],text:`CALON MENANTU: Pak, Bu, saya— saya ke sini mau menyampaikan sesuatu yang penting.
+CALON MERTUA: Oh, santai aja, Nak, kami juga udah nebak sejak kamu masuk bawa cincin itu.
+CALON MENANTU: (kaget) Eh, Bapak udah tau? Saya kira saya nyembunyiinnya rapi tadi.
+CALON MERTUA: Saku jaket kamu itu menggembung banget, Nak, susah buat nggak ketahuan.
+CALON MENANTU: (tertawa gugup) Baik, Pak, Bu, saya minta restu untuk melamar anak Bapak.
+CALON MERTUA: Dengan senang hati kami restui. Selamat ya, Nak!`},
+{id:'d64',type:'dialog',title:'Lamaran Ditolak',emotion:'kecewa',difficulty:'mahir',theme:'percintaan',characters:['PRIA','WANITA'],text:`PRIA: Aku udah nyiapin ini berminggu-minggu. Maukah kamu menikah denganku?
+WANITA: (menatap lama, lalu menghela napas) Aku sayang kamu. Tapi aku belum siap untuk ini.
+PRIA: Aku ngerti. Aku beneran ngerti, meski ini berat buat aku dengar.
+WANITA: Ini bukan soal kamu kurang baik. Aku cuma butuh waktu lebih buat diri aku sendiri.
+PRIA: Nggak apa-apa. Cincin ini bisa nunggu kapan pun kamu siap.
+WANITA: Terima kasih udah sabar sama aku. Maaf harus bikin kamu kecewa malam ini.`},
+{id:'d65',type:'dialog',title:'Hari Pertama Kerja',emotion:'cemas',difficulty:'pemula',theme:'kerja',characters:['KARYAWAN BARU','SENIOR'],text:`KARYAWAN BARU: Permisi, ini meja saya yang mana ya? Saya baru hari ini.
+SENIOR: Oh, kamu pasti yang baru itu. Sini, meja kamu yang dekat jendela itu.
+KARYAWAN BARU: Terima kasih. Maaf kalau nanti saya banyak tanya, masih belum paham alur kerjanya.
+SENIOR: Santai aja, semua orang di sini juga pernah jadi anak baru.
+KARYAWAN BARU: Saya cuma takut salah ngomong atau salah manggil nama atasan.
+SENIOR: Nggak usah khawatir, yang penting kamu mau belajar. Itu aja udah cukup.`},
+{id:'d66',type:'dialog',title:'Jadi Ketua OSIS',emotion:'bangga',difficulty:'menengah',theme:'sekolah',characters:['MURID','KEPSEK'],text:`KEPSEK: Selamat, hasil voting menunjukkan kamu terpilih jadi ketua OSIS tahun ini.
+MURID: Terima kasih, Pak. Saya sampai nggak nyangka bisa menang dari kandidat lain.
+KEPSEK: Kamu dipilih karena murid-murid percaya kamu bisa mewakili suara mereka.
+MURID: Saya janji akan dengarkan semua masukan, bukan cuma jalanin program sendiri.
+KEPSEK: Itu sikap yang bagus. Kepemimpinan yang baik dimulai dari mau mendengarkan.
+MURID: Saya akan berusaha sebaik mungkin, Pak. Terima kasih atas kepercayaannya.`},
+{id:'d67',type:'dialog',title:'Perjanjian',emotion:'benci',difficulty:'mahir',theme:'supernatural',characters:['MANUSIA','IBLIS'],text:`MANUSIA: Kamu bilang perjanjian ini akan menyelamatkan adikku. Kamu bohong besar.
+IBLIS: Aku menepati kata-kataku persis. Adikmu memang sembuh, bukan begitu?
+MANUSIA: Tapi dia sekarang jadi orang yang nggak aku kenal lagi!
+IBLIS: Kontrak tidak pernah bilang dia akan kembali seperti semula, manusia.
+MANUSIA: Aku akan cari cara membatalkan ini, walau aku harus turun ke nerakamu sekalipun.
+IBLIS: (tertawa) Silakan coba. Tidak ada yang pernah berhasil sejauh ini.`},
+{id:'d68',type:'dialog',title:'Kutukan Terungkap',emotion:'terkejut',difficulty:'mahir',theme:'fantasi',characters:['PANGERAN','PENYIHIR'],text:`PANGERAN: Kamu bilang kutukan ini datang dari musuh kerajaan. Kenapa buku ini bilang lain?
+PENYIHIR: (terdiam) Yang Mulia tidak seharusnya membaca buku itu.
+PANGERAN: Buku ini jelas menyebutkan kutukan berasal dari garis keturunanku sendiri!
+PENYIHIR: Benar. Dan aku yang menyembunyikannya selama ini untuk melindungi kerajaan.
+PANGERAN: Melindungi kerajaan, atau melindungi kebohonganmu sendiri?
+PENYIHIR: Keduanya, Yang Mulia. Dan aku siap menanggung akibatnya sekarang.`},
+{id:'d69',type:'dialog',title:'Ketemu Lagi Setelah Putus',emotion:'tenang',difficulty:'menengah',theme:'percintaan',characters:['MANTAN 1','MANTAN 2'],text:`MANTAN 1: Nggak nyangka ketemu kamu lagi di sini, udah berapa lama ya?
+MANTAN 2: Enam bulan kayaknya. Kamu kelihatan baik-baik aja.
+MANTAN 1: Aku juga seneng lihat kamu baik-baik aja. Gimana kerjaan kamu sekarang?
+MANTAN 2: Lancar, aku baru pindah divisi bulan lalu. Kamu sendiri gimana?
+MANTAN 1: Baik juga. Aku... aku seneng kita bisa ngobrol santai kayak gini sekarang.
+MANTAN 2: Aku juga. Mungkin ini artinya kita berdua udah beneran baik-baik aja.`},
+{id:'d70',type:'dialog',title:'Ditinggal Sendirian',emotion:'putus asa',difficulty:'menengah',theme:'persahabatan',characters:['SAHABAT 1','SAHABAT 2'],text:`SAHABAT 1: Udah lama banget kita nggak kumpul bertiga kayak dulu.
+SAHABAT 2: Iya, semua sibuk sama circle masing-masing sekarang.
+SAHABAT 1: Aku kadang ngerasa sendirian, padahal grup chat kita masih ada.
+SAHABAT 2: Aku juga ngerasa gitu. Mungkin kita yang harus mulai ngajak ketemu lagi.
+SAHABAT 1: Besok malam kosong nggak? Kita ngopi bareng kayak dulu aja.
+SAHABAT 2: Kosong. Ayo, aku kangen banget ngobrol bareng kalian lagi.`},
+{id:'d71',type:'dialog',title:'Rekan Favorit Bos',emotion:'cemburu',difficulty:'menengah',theme:'kerja',characters:['KARYAWAN','REKAN KERJA'],text:`KARYAWAN: Kamu notice nggak, ide kita sama tapi punya kamu yang selalu disetujui bos?
+REKAN KERJA: Aku nggak ngerasa gitu sih. Mungkin kebetulan aja timing-nya pas.
+KARYAWAN: Udah tiga kali ini kejadian, nggak mungkin cuma kebetulan.
+REKAN KERJA: Kalau kamu ngerasa diperlakukan nggak adil, coba ngomong langsung ke bos.
+KARYAWAN: Aku takut malah dianggap baper kalau ngomong soal ini.
+REKAN KERJA: Lebih baik diomongin daripada dipendem sendiri terus, kan?`},
+{id:'d72',type:'dialog',title:'Reuni SMA',emotion:'rindu',difficulty:'pemula',theme:'sekolah',characters:['ALUMNI 1','ALUMNI 2'],text:`ALUMNI 1: Ya ampun, udah lima tahun ya sejak kita lulus dari sini.
+ALUMNI 2: Iya, kelas kita dulu di ujung koridor itu masih ada lho.
+ALUMNI 1: Masih inget nggak waktu kita berdua kena hukum lari keliling lapangan?
+ALUMNI 2: Inget banget, gara-gara ketahuan tidur pas upacara bendera.
+ALUMNI 1: Masa SMA emang singkat ya, tapi kenangannya nggak pernah ilang.
+ALUMNI 2: Setuju. Yuk, kita foto di depan kelas lama kita sekali lagi.`},
+{id:'d73',type:'dialog',title:'Dipaksa Menikah',emotion:'marah',difficulty:'mahir',theme:'keluarga',characters:['ANAK','ORANG TUA'],text:`ORANG TUA: Tanggal pernikahanmu sudah kami tentukan bulan depan, dengan keluarga Pak Hartono.
+ANAK: Kalian atur semua ini tanpa tanya aku sama sekali?
+ORANG TUA: Ini demi menjaga nama baik keluarga kita, Nak.
+ANAK: Nama baik siapa yang sebenarnya kalian jaga? Bukan hidup aku yang kalian pikirkan.
+ORANG TUA: Kamu harus mengerti, ini bukan keputusan yang mudah buat kami juga.
+ANAK: Kalau kalian paksa aku berdiri di altar itu, aku akan jawab tidak di depan semua tamu.`},
+{id:'d74',type:'dialog',title:'Terakhir Kali Jadi Manusia',emotion:'sedih',difficulty:'mahir',theme:'fantasi',characters:['PENYIHIR TUA','MURID'],text:`MURID: Guru, apa benar kutukan itu akan sempurna begitu matahari terbenam?
+PENYIHIR TUA: Benar, Nak. Tidak ada lagi mantra yang bisa membatalkannya sekarang.
+MURID: Aku takut, Guru. Aku takut lupa siapa diriku setelah ini.
+PENYIHIR TUA: Ingat selalu nama ibumu, dan wajah orang-orang yang kau cintai. Itu akan menahanmu.
+MURID: Terima kasih sudah membimbingku selama ini, Guru.
+PENYIHIR TUA: Pergilah dengan tenang, Nak. Aku akan selalu mengingatmu seperti ini, sebagai manusia.`},
+{id:'d75',type:'dialog',title:'Bantuan Tepat Waktu',emotion:'senang',difficulty:'pemula',theme:'drama-sosial',characters:['PENERIMA BANTUAN','RELAWAN'],text:`RELAWAN: Permisi, Bu, kami bawa sembako untuk keluarga di sini.
+PENERIMA BANTUAN: Ya ampun, terima kasih banyak, kami tiga hari ini cuma makan nasi sama kecap.
+RELAWAN: Maaf baru bisa datang sekarang, semoga ini cukup membantu dulu.
+PENERIMA BANTUAN: (menangis haru) Ini lebih dari cukup. Saya sampai nggak tahu harus bilang apa.
+RELAWAN: Nggak apa-apa, Bu. Kalau butuh bantuan lagi, kami ada di posko dekat sini.
+PENERIMA BANTUAN: Terima kasih, terima kasih banyak. Bantuan ini datang tepat waktu banget.`}
 ];
 
 const ALL_EMOTIONS = ['marah','sedih','senang','takut','gugup','kecewa','cemas','bangga','benci','terkejut','tenang','putus asa','cemburu','rindu'];
@@ -1024,6 +1529,11 @@ function renderCommunityList(){
     });
   });
 }
+
+/* ============ SOCIAL SFX ============ */
+document.querySelectorAll('.social-pill, .footer-social a').forEach(a=>{
+  a.addEventListener('click', ()=>{ sfxToggle(); });
+});
 
 /* ============ INIT ============ */
 (async function init(){
